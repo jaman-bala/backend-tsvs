@@ -16,12 +16,12 @@ from backend.src.account.user.crud import _get_user_by_id
 from backend.src.account.user.crud import _update_user
 from backend.src.account.user.crud import _get_all_users
 from backend.src.account.user.crud import check_user_permissions
-from backend.src.account.user.schemas import DeleteUserResponse
+from backend.src.account.user.schemas import DeleteUserResponse, ResetPasswordRequest
 from backend.src.account.user.schemas import ShowUser
 from backend.src.account.user.schemas import UpdateUserRequest
 from backend.src.account.user.schemas import UpdatedUserResponse
 from backend.src.account.user.schemas import UserCreate
-from backend.src.account.user.dals import User
+from backend.src.account.user.dals import User, UserDAL
 from backend.db.session import get_db
 
 logger = getLogger(__name__)
@@ -37,6 +37,19 @@ async def get_all_user(
     if not all_users:
         return []
     return [ShowUser(**user.__dict__) for user in all_users]
+
+
+@user_router.get("/{user_id}", response_model=ShowUser)
+async def get_user_by_id(
+        user_id: UUID, db: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user_from_token),
+) -> ShowUser:
+    user = await _get_user_by_id(user_id, db)
+    if user is None:
+        raise HTTPException(
+            status_code=404, detail=f"User with id {user_id} not found."
+        )
+    return user
 
 
 @user_router.post("/", response_model=ShowUser)
@@ -96,7 +109,7 @@ async def grand_admin_privilege(
             detail="User with id {user_id} not found.",
         )
     updated_user_params = {
-        "roles": user_for_promotion.enrich_admin_roles_by_admin_role()
+        "roles": list(user_for_promotion.enrich_admin_roles_by_admin_role())
     }
     try:
         updated_user_id = await _update_user(
@@ -142,19 +155,6 @@ async def revoke_admin_privilege(
     return UpdatedUserResponse(updated_user_id=updated_user_id)
 
 
-@user_router.get("/{user_id}", response_model=ShowUser)
-async def get_user_by_id(
-        user_id: UUID, db: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
-) -> ShowUser:
-    user = await _get_user_by_id(user_id, db)
-    if user is None:
-        raise HTTPException(
-            status_code=404, detail=f"User with id {user_id} not found."
-        )
-    return user
-
-
 @user_router.patch("/", response_model=UpdatedUserResponse)
 async def update_user_by_id(
     user_id: UUID,
@@ -181,11 +181,33 @@ async def update_user_by_id(
         ):
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Forbidden")
     try:
-        updated_user_id = await _update_user(updated_user_params=updated_user_params, session=db)
+        updated_user_id = await _update_user(
+            user_id=user_id,
+            updated_user_params=updated_user_params,
+            session=db
+        )
     except IntegrityError as err:
         logger.error(err)
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=f"Database error: {err}",
         )
+    return UpdatedUserResponse(updated_user_id=updated_user_id)
+
+
+@user_router.post("/reset-password/{user_id}", response_model=UpdatedUserResponse)
+async def reset_password(
+    user_id: UUID,
+    request: ResetPasswordRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user_from_token),
+) -> UpdatedUserResponse:
+    user_dal = UserDAL(db)
+    if not (current_user.is_admin or current_user.is_superadmin):
+        raise HTTPException(status_code=403, detail="Forbidden. Only admins can reset passwords.")
+    try:
+        updated_user_id = await user_dal.reset_password(user_id, request.new_password)
+    except IntegrityError as err:
+        logger.error(err)
+        raise HTTPException(status_code=503, detail=f"Database error: {err}")
     return UpdatedUserResponse(updated_user_id=updated_user_id)

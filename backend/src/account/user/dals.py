@@ -6,6 +6,7 @@ from sqlalchemy import select
 from sqlalchemy import update
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from backend.src.account.auth.hashing import Hasher
 from backend.src.account.user.models import PortalRole
 from backend.src.account.user.models import User
 
@@ -77,3 +78,15 @@ class UserDAL:
         update_user_id_row = res.fetchone()
         if update_user_id_row is not None:
             return update_user_id_row[0]
+
+    async def reset_password(self, user_id: UUID, new_password: str) -> Union[UUID, None]:
+        query = (
+            update(User)
+            .where(User.user_id == user_id)
+            .values(hashed_password=Hasher.get_password_hash(new_password))
+            .returning(User.user_id)
+        )
+        res = await self.db_session.execute(query)
+        updated_user_id_row = res.fetchone()
+        if updated_user_id_row is not None:
+            return updated_user_id_row[0]

@@ -47,12 +47,11 @@ async def _delete_user(user_id: UUID, session: AsyncSession) -> Union[UUID, None
 
 
 async def _update_user(
-    updated_user_params: dict, session: AsyncSession
+    updated_user_params: dict, user_id: UUID, session: AsyncSession
 ) -> Union[UUID, None]:
-    async with session.begin():
-        user_dal = UserDAL(session)
-        updated_user_id = await user_dal.update_user(**updated_user_params)
-        return updated_user_id
+    user_dal = UserDAL(session)
+    updated_user_id = await user_dal.update_user(user_id=user_id, **updated_user_params)
+    return updated_user_id
 
 
 async def _get_user_by_id(user_id: UUID, session: AsyncSession) -> Union[User, None]:
