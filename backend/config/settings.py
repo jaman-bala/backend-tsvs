@@ -7,18 +7,17 @@ from pathlib import Path
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
+SQLALCHEMY_DATABASE_URL = "sqlite+aiosqlite:///./app.db"
+
 
 class Settings:
     PROJECT_NAME: str = "TSVS DATABASE License 🔥"
     PROJECT_VERSION: str = "1.0.0"
-    SQLALCHEMY_DATABASE_URL: str = os.getenv("SQLALCHEMY_DATABASE_URL")
 
 
-settings = Settings()
+set = Settings()
 
-engine = create_async_engine(
-    settings.SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False}
-)
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=AsyncSession)
+SECRET_KEY: str = os.getenv("SECRET_KEY", default="secret_key")
+ALGORITHM: str = os.getenv("ALGORITHM", default="HS256")
+ACCESS_TOKEN_EXPIRE_MINUTES: int = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", default=30)
