@@ -4,7 +4,7 @@ from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
 
-Base = declarative_base()
+BaseUser = declarative_base()
 
 
 class PortalRole(str, Enum):
@@ -13,7 +13,7 @@ class PortalRole(str, Enum):
     ROLE_PORTAL_SUPERADMIN = "ROLE_PORTAL_SUPERADMIN"
 
 
-class User(Base):
+class User(BaseUser):
     __tablename__ = "users"
 
     user_id = Column(UUID, primary_key=True, default=uuid.uuid4)
@@ -39,3 +39,4 @@ class User(Base):
     def remove_admin_privileges_from_model(self):
         if self.is_admin:
             return {role for role in self.roles if role != PortalRole.ROLE_PORTAL_ADMIN}
+

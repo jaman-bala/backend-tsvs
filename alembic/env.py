@@ -3,14 +3,15 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 
-from backend.src.account.user.models import Base
+from backend.src.account.user.models import BaseUser
+from backend.src.license.models import BaseItems
 
 config = context.config
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-target_metadata = Base.metadata
+target_metadata = (BaseUser.metadata, BaseItems.metadata)
 
 
 def run_migrations_offline() -> None:

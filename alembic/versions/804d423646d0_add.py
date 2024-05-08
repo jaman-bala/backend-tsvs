@@ -1,8 +1,8 @@
-"""edit models User roles str
+"""add
 
-Revision ID: 782b4c5d8b13
+Revision ID: 804d423646d0
 Revises: 
-Create Date: 2024-05-06 11:17:43.119138
+Create Date: 2024-05-07 18:10:48.076297
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '782b4c5d8b13'
+revision = '804d423646d0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,7 +25,7 @@ def upgrade() -> None:
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=True),
     sa.Column('hashed_password', sa.String(), nullable=False),
-    sa.Column('roles', sa.String(), nullable=False),
+    sa.Column('roles', sa.JSON(), nullable=False),
     sa.PrimaryKeyConstraint('user_id'),
     sa.UniqueConstraint('email')
     )

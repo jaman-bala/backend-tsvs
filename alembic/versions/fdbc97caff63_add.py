@@ -1,8 +1,8 @@
-"""edit models User UUID
+"""add
 
-Revision ID: 1395fe1575ac
-Revises: 0e7532002cd1
-Create Date: 2024-05-06 14:59:25.513989
+Revision ID: fdbc97caff63
+Revises: 6138f7abb902
+Create Date: 2024-05-07 18:12:31.388472
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1395fe1575ac'
-down_revision = '0e7532002cd1'
+revision = 'fdbc97caff63'
+down_revision = '6138f7abb902'
 branch_labels = None
 depends_on = None
 
