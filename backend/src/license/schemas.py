@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 from typing import Optional
 
+#######################
+# REGION SCHEMAS
+#######################
+
 
 class TunedModel(BaseModel):
     class Config:
@@ -22,6 +26,10 @@ class RegionOUT(ShowRegionBase):
 class RegionCreate(BaseModel):
     name: str
 
+
+#######################
+# ITEM SCHEMAS
+#######################
 
 class ShowItemBase(TunedModel):
     id: int

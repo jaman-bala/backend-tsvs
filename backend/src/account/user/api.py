@@ -32,6 +32,7 @@ user_router = APIRouter()
 @user_router.get("/", response_model=List[ShowUser])
 async def get_all_user(
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user_from_token)
 ) -> List[ShowUser]:
     all_users = await _get_all_users(db)
     if not all_users:
@@ -53,7 +54,11 @@ async def get_user_by_id(
 
 
 @user_router.post("/", response_model=ShowUser)
-async def create_user(body: UserCreate, db: AsyncSession = Depends(get_db)) -> ShowUser:
+async def create_user(
+        body: UserCreate,
+        db: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user_from_token),
+) -> ShowUser:
     try:
         return await _create_new_user(body, db)
     except IntegrityError as err:

@@ -3,6 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from backend.db.session import get_db
+from backend.src.account.auth.auth import get_current_user_from_token
+from backend.src.account.user.models import User
 from backend.src.license.models import Region, Item
 from backend.src.license.schemas import RegionOUT, RegionCreate, ItemOUT, ItemCreate
 
@@ -14,7 +16,11 @@ router = APIRouter()
 
 
 @router.post("/regions/", response_model=RegionOUT)
-async def create_region(region: RegionCreate, session: AsyncSession = Depends(get_db)):
+async def create_region(
+        region: RegionCreate,
+        session: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user_from_token),
+):
     db_region = Region(**region.dict())
     session.add(db_region)
     await session.commit()
@@ -23,7 +29,10 @@ async def create_region(region: RegionCreate, session: AsyncSession = Depends(ge
 
 
 @router.get("/regions/", response_model=list[RegionOUT])
-async def read_regions(session: AsyncSession = Depends(get_db)):
+async def read_regions(
+        session: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user_from_token),
+):
     result = await session.execute(select(Region))
     regions = result.scalars().all()
     return regions
@@ -55,7 +64,11 @@ async def update_region(region_id: int, region_update: RegionCreate, session: As
 
 
 @router.delete("/regions/{region_id}", response_model=RegionOUT)
-async def delete_region(region_id: int, session: AsyncSession = Depends(get_db)):
+async def delete_region(
+        region_id: int,
+        session: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user_from_token),
+):
     # Получаем регион из базы данных
     region = await session.get(Region, region_id)
     if region is None:
