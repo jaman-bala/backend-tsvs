@@ -1,0 +1,497 @@
+INFO:backend.src.account.auth.auth:username/email extracted is das@gmail.com
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.email, users.is_active, users.hashed_password, users.roles 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00085s] ('das@gmail.com',)
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00063s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00061s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на загрузку файлов для элемента с ID 1
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id AS items_id, items.number_register AS items_number_register, items.name_entity AS items_name_entity, items.tax_name AS items_tax_name, items.entity_address AS items_entity_address, items.address_program AS items_address_program, items.cipher AS items_cipher, items.title_school AS items_title_school, items.quantity_school AS items_quantity_school, items.forms_education AS items_forms_education, items.full_name AS items_full_name, items.contract_number AS items_contract_number, items.issuing_license AS items_issuing_license, items.data_license AS items_data_license, items.form_number AS items_form_number, items.form_number_suspended AS items_form_number_suspended, items.form_number_start AS items_form_number_start, items.form_number_stop AS items_form_number_stop, items.data_address AS items_data_address, items.form_number_data AS items_form_number_data, items.is_active AS items_is_active, items.region_id AS items_region_id, items.quantity_id AS items_quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00079s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на загрузку файлов для элемента с ID 1
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id AS items_id, items.number_register AS items_number_register, items.name_entity AS items_name_entity, items.tax_name AS items_tax_name, items.entity_address AS items_entity_address, items.address_program AS items_address_program, items.cipher AS items_cipher, items.title_school AS items_title_school, items.quantity_school AS items_quantity_school, items.forms_education AS items_forms_education, items.full_name AS items_full_name, items.contract_number AS items_contract_number, items.issuing_license AS items_issuing_license, items.data_license AS items_data_license, items.form_number AS items_form_number, items.form_number_suspended AS items_form_number_suspended, items.form_number_start AS items_form_number_start, items.form_number_stop AS items_form_number_stop, items.data_address AS items_data_address, items.form_number_data AS items_form_number_data, items.is_active AS items_is_active, items.region_id AS items_region_id, items.quantity_id AS items_quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 112.6s ago] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового региона: string
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:INSERT INTO regions (name, is_active) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00024s] ('string', 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id, regions.name, regions.is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] (1,)
+INFO:backend.src.license.router:Новый регион успешно создан: string
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:INSERT INTO quantitys (name, is_active) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('string', 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id, quantitys.name, quantitys.is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] (1,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO items (number_register, name_entity, tax_name, entity_address, address_program, cipher, title_school, quantity_school, forms_education, full_name, contract_number, issuing_license, data_license, form_number, form_number_suspended, form_number_start, form_number_stop, data_address, form_number_data, is_active, region_id, quantity_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00049s] ('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 1, 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00050s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:INSERT INTO quantitys (name, is_active) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 32.67s ago] ('string', 1)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id, quantitys.name, quantitys.is_active 
+FROM quantitys
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 56.01s ago] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 56.01s ago] (1,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO items (number_register, name_entity, tax_name, entity_address, address_program, cipher, title_school, quantity_school, forms_education, full_name, contract_number, issuing_license, data_license, form_number, form_number_suspended, form_number_start, form_number_stop, data_address, form_number_data, is_active, region_id, quantity_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 56.01s ago] ('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 1, 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 56.01s ago] (2,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[cached since 56s ago] (2,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] (1,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO items (number_register, name_entity, tax_name, entity_address, address_program, cipher, title_school, quantity_school, forms_education, full_name, contract_number, issuing_license, data_license, form_number, form_number_suspended, form_number_start, form_number_stop, data_address, form_number_data, is_active, region_id, quantity_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00085s] ('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 1, 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] (3,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] (3,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00041s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] (1,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO items (number_register, name_entity, tax_name, entity_address, address_program, cipher, title_school, quantity_school, forms_education, full_name, contract_number, issuing_license, data_license, form_number, form_number_suspended, form_number_start, form_number_stop, data_address, form_number_data, is_active, region_id, quantity_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00042s] ('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 1, 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] (4,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] (4,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] (1,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO items (number_register, name_entity, tax_name, entity_address, address_program, cipher, title_school, quantity_school, forms_education, full_name, contract_number, issuing_license, data_license, form_number, form_number_suspended, form_number_start, form_number_stop, data_address, form_number_data, is_active, region_id, quantity_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00086s] ('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 1, 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] (5,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] (5,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00044s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] (1,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO items (number_register, name_entity, tax_name, entity_address, address_program, cipher, title_school, quantity_school, forms_education, full_name, contract_number, issuing_license, data_license, form_number, form_number_suspended, form_number_start, form_number_stop, data_address, form_number_data, is_active, region_id, quantity_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00067s] ('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 1, 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] (6,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] (6,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] (1,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO items (number_register, name_entity, tax_name, entity_address, address_program, cipher, title_school, quantity_school, forms_education, full_name, contract_number, issuing_license, data_license, form_number, form_number_suspended, form_number_start, form_number_stop, data_address, form_number_data, is_active, region_id, quantity_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 1, 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00042s] (7,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на загрузку файлов для элемента с ID 7
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id AS items_id, items.number_register AS items_number_register, items.name_entity AS items_name_entity, items.tax_name AS items_tax_name, items.entity_address AS items_entity_address, items.address_program AS items_address_program, items.cipher AS items_cipher, items.title_school AS items_title_school, items.quantity_school AS items_quantity_school, items.forms_education AS items_forms_education, items.full_name AS items_full_name, items.contract_number AS items_contract_number, items.issuing_license AS items_issuing_license, items.data_license AS items_data_license, items.form_number AS items_form_number, items.form_number_suspended AS items_form_number_suspended, items.form_number_start AS items_form_number_start, items.form_number_stop AS items_form_number_stop, items.data_address AS items_data_address, items.form_number_data AS items_form_number_data, items.is_active AS items_is_active, items.region_id AS items_region_id, items.quantity_id AS items_quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00110s] (7,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO files (filename, filepath, item_id) VALUES (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] ('ТЗ для ПК .docx', 'media/file\\ТЗ для ПК .docx', 7)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] (1,)
+INFO:backend.src.license.router:Файлы для элемента с ID 7 успешно загружены
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ()
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT regions.id AS regions_id, regions.name AS regions_name, regions.is_active AS regions_is_active 
+FROM regions 
+WHERE regions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00040s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT quantitys.id AS quantitys_id, quantitys.name AS quantitys_name, quantitys.is_active AS quantitys_is_active 
+FROM quantitys 
+WHERE quantitys.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] (1,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO items (number_register, name_entity, tax_name, entity_address, address_program, cipher, title_school, quantity_school, forms_education, full_name, contract_number, issuing_license, data_license, form_number, form_number_suspended, form_number_start, form_number_stop, data_address, form_number_data, is_active, region_id, quantity_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00052s] ('string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'fwefew', 'string', 'fwef', 'fewfwe', 'string', 'efwe', 'dasfd', 'few', 1, 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] (8,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на загрузку файлов для элемента с ID 8
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id AS items_id, items.number_register AS items_number_register, items.name_entity AS items_name_entity, items.tax_name AS items_tax_name, items.entity_address AS items_entity_address, items.address_program AS items_address_program, items.cipher AS items_cipher, items.title_school AS items_title_school, items.quantity_school AS items_quantity_school, items.forms_education AS items_forms_education, items.full_name AS items_full_name, items.contract_number AS items_contract_number, items.issuing_license AS items_issuing_license, items.data_license AS items_data_license, items.form_number AS items_form_number, items.form_number_suspended AS items_form_number_suspended, items.form_number_start AS items_form_number_start, items.form_number_stop AS items_form_number_stop, items.data_address AS items_data_address, items.form_number_data AS items_form_number_data, items.is_active AS items_is_active, items.region_id AS items_region_id, items.quantity_id AS items_quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00205s] (8,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO files (filename, filepath, item_id) VALUES (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00040s] ('Биография Директора.docx', 'media/file\\Биография Директора.docx', 8)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00042s] (2,)
+INFO:backend.src.license.router:Файлы для элемента с ID 8 успешно загружены
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[cached since 85.12s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[cached since 85.11s ago] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00090s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[cached since 47.86s ago] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ()
+INFO:sqlalchemy.engine.Engine:SELECT files.id AS files_id, files.filename AS files_filename, files.filepath AS files_filepath, files.item_id AS files_item_id 
+FROM files 
+WHERE ? = files.item_id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ()
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.002912s ago] (2,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.004681s ago] (3,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.00629s ago] (4,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.007628s ago] (5,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.008888s ago] (6,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.01076s ago] (7,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.01268s ago] (8,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на загрузку файлов для элемента с ID 6
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id AS items_id, items.number_register AS items_number_register, items.name_entity AS items_name_entity, items.tax_name AS items_tax_name, items.entity_address AS items_entity_address, items.address_program AS items_address_program, items.cipher AS items_cipher, items.title_school AS items_title_school, items.quantity_school AS items_quantity_school, items.forms_education AS items_forms_education, items.full_name AS items_full_name, items.contract_number AS items_contract_number, items.issuing_license AS items_issuing_license, items.data_license AS items_data_license, items.form_number AS items_form_number, items.form_number_suspended AS items_form_number_suspended, items.form_number_start AS items_form_number_start, items.form_number_stop AS items_form_number_stop, items.data_address AS items_data_address, items.form_number_data AS items_form_number_data, items.is_active AS items_is_active, items.region_id AS items_region_id, items.quantity_id AS items_quantity_id 
+FROM items 
+WHERE items.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00055s] (6,)
+INFO:sqlalchemy.engine.Engine:INSERT INTO files (filename, filepath, item_id) VALUES (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ('Аскар Асанов_2024_04_23_15_47_58_706.csv', 'media/file\\Аскар Асанов_2024_04_23_15_47_58_706.csv', 6)
+INFO:sqlalchemy.engine.Engine:COMMIT using DBAPI connection.commit(), DBAPI should ignore due to autocommit mode
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00091s] (3,)
+INFO:backend.src.license.router:Файлы для элемента с ID 6 успешно загружены
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ()
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.002212s ago] (2,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.004018s ago] (3,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.006004s ago] (4,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.007686s ago] (5,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.009081s ago] (6,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.01084s ago] (7,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.01248s ago] (8,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode
+INFO:backend.src.license.router:Получен запрос на создание нового элемента
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit; DBAPI should not BEGIN due to autocommit mode)
+INFO:sqlalchemy.engine.Engine:SELECT items.id, items.number_register, items.name_entity, items.tax_name, items.entity_address, items.address_program, items.cipher, items.title_school, items.quantity_school, items.forms_education, items.full_name, items.contract_number, items.issuing_license, items.data_license, items.form_number, items.form_number_suspended, items.form_number_start, items.form_number_stop, items.data_address, items.form_number_data, items.is_active, items.region_id, items.quantity_id 
+FROM items
+INFO:sqlalchemy.engine.Engine:[generated in 0.00045s] ()
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00112s] (1,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.007334s ago] (2,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.0115s ago] (3,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.01332s ago] (4,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.01501s ago] (5,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.01705s ago] (6,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.01873s ago] (7,)
+INFO:sqlalchemy.engine.Engine:SELECT files.id, files.filename, files.filepath, files.item_id 
+FROM files 
+WHERE files.item_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.02161s ago] (8,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK using DBAPI connection.rollback(), DBAPI should ignore due to autocommit mode

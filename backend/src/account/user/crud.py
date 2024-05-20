@@ -26,7 +26,9 @@ async def _create_new_user(body: UserCreate, session: AsyncSession) -> ShowUser:
             surname=body.surname,
             email=body.email,
             hashed_password=Hasher.get_password_hash(body.password),
-            roles=json.dumps([PortalRole.ROLE_PORTAL_USER]),
+            roles=[
+                PortalRole.ROLE_PORTAL_USER,
+            ],
         )
         return ShowUser(
             user_id=user.user_id,

@@ -22,6 +22,7 @@ class ShowUser(TunedModel):
     name: str
     surname: str
     email: EmailStr
+
     is_active: bool
 
 
@@ -30,6 +31,7 @@ class UserCreate(BaseModel):
     surname: str
     email: EmailStr
     password: str
+
 
     @validator("name")
     def validate_name(cls, value):

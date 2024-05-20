@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.routing import APIRouter
+from fastapi.staticfiles import StaticFiles
 # from starlette_exporter import handle_metrics
 # from starlette_exporter import PrometheusMiddleware
 # from fastapi.middleware.cors import CORSMiddleware
@@ -19,6 +20,9 @@ app = FastAPI(
     title=set.PROJECT_NAME,
     version=set.PROJECT_VERSION
 )
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
 # origins = [
 #     "http://localhost:3000",  # React app
 # ]
@@ -29,6 +33,7 @@ app = FastAPI(
 #     allow_credentials=True,
 #     allow_methods=["*"],
 #     allow_headers=["*"],
+# )
 # )
 # app.add_middleware(PrometheusMiddleware)
 # app.add_route("/metrics", handle_metrics)

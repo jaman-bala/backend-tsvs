@@ -26,7 +26,9 @@ async def _get_user_by_email_for_auth(email: str, db: AsyncSession):
 
 
 async def authenticate_user(
-        email: str, password: str, db: AsyncSession
+        email: str,
+        password: str,
+        db: AsyncSession
 ) -> Union[User, None]:
     user = await _get_user_by_email_for_auth(email=email, db=db)
     if user is None:
@@ -45,7 +47,8 @@ async def authenticate_user(
 
 
 async def get_current_user_from_token(
-        token: str = Depends(oauth2_scheme), db: AsyncSession = Depends(get_db)
+        token: str = Depends(oauth2_scheme),
+        db: AsyncSession = Depends(get_db),
 ):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
