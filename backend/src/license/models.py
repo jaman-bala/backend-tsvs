@@ -66,6 +66,7 @@ class Item(BaseItems):
     form_number_stop = Column(String, index=True, nullable=True)
     data_address = Column(String, index=True, nullable=True)
     form_number_data = Column(String, index=True, nullable=True)
+    issuing_authority = Column(String, index=True, nullable=True)
 
     is_active = Column(Boolean(), default=True)
 

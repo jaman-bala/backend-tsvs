@@ -92,6 +92,7 @@ class ShowItemBase(TunedModel):
     form_number_stop: str
     data_address: str
     form_number_data: str
+    issuing_authority: str
 
     is_active: bool
 
@@ -117,11 +118,13 @@ class ItemSchemasOUT(ShowItemBase):
     form_number_stop: str
     data_address: str
     form_number_data: str
+    issuing_authority: Optional[str]
+
     region_id: int
     quantity_id: int
 
+    files: Optional[List[FileOUT]]
     is_active: Optional[bool]
-    files: List[FileOUT]
 
 
 class ItemCreate(BaseModel):
@@ -144,5 +147,7 @@ class ItemCreate(BaseModel):
     form_number_stop: str
     data_address: str
     form_number_data: str
+    issuing_authority: str
+
     region_id: int
     quantity_id: int

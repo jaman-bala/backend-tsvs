@@ -9,7 +9,6 @@ from fastapi.staticfiles import StaticFiles
 from backend.config.settings import set
 from backend.src.account.user.api import user_router
 from backend.src.account.user.login_handler import login_router
-from backend.src.account.user.router import service_router
 from backend.src.license.router import router as license_router
 
 #########################
@@ -42,16 +41,19 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 main_api_router = APIRouter()
 
 # set routes to the app instance
-main_api_router.include_router(
-    service_router,
-    tags=["service"]
-)
+
+
+@main_api_router.get("/")
+async def ping():
+    return {"Success": "Салам алейкум на backend🚀"}
+
 
 main_api_router.include_router(
     user_router,
     prefix="/user",
     tags=["USER"]
 )
+
 main_api_router.include_router(
     login_router,
     prefix="/login",
