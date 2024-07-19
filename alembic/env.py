@@ -1,17 +1,25 @@
+import os
 from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 
 from backend.src.account.user.models import BaseUser
-from backend.src.license.models import BaseItems
+from backend.src.regions.models import BaseRegion
+from backend.src.departments.models import BaseDepartment
 
 config = context.config
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-target_metadata = (BaseUser.metadata, BaseItems.metadata)
+target_metadata = (
+    BaseUser.metadata,
+    BaseRegion.metadata,
+    BaseDepartment.metadata,
+)
+
+url = os.environ.get("SQLALCHEMY_DATABASE_URL", config.get_main_option("sqlalchemy.url"))
 
 
 def run_migrations_offline() -> None:
@@ -26,7 +34,6 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -45,8 +52,11 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
+    config_section = config.get_section(config.config_ini_section)
+    config_section["sqlalchemy.url"] = url
+
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section, {}),
+        config_section,
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )

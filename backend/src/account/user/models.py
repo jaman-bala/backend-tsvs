@@ -1,6 +1,7 @@
-from sqlalchemy import Boolean, Column, String, Enum, JSON
+from sqlalchemy import Boolean, Column, String, Enum, JSON, DateTime, Date
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.dialects.postgresql import UUID
+from datetime import datetime
 import uuid
 
 
@@ -14,15 +15,22 @@ class PortalRole(str, Enum):
 
 
 class User(BaseUser):
+
     __tablename__ = "users"
 
     user_id = Column(UUID, primary_key=True, default=uuid.uuid4)
+    avatar = Column(String, nullable=True)
     name = Column(String, nullable=False)
     surname = Column(String, nullable=False)
+    birth_year = Column(Date, nullable=True)
     email = Column(String, nullable=False, unique=True)
-    is_active = Column(Boolean(), default=True)
     hashed_password = Column(String, nullable=False)
+
+    is_active = Column(Boolean(), default=True)
     roles = Column(JSON, nullable=False)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     @property
     def is_superadmin(self) -> bool:

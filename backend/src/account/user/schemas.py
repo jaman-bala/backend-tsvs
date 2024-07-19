@@ -1,7 +1,7 @@
 import re
 import uuid
 from typing import Optional, List
-
+from datetime import date, datetime
 from fastapi import HTTPException
 from pydantic import BaseModel
 from pydantic import constr
@@ -19,17 +19,23 @@ class TunedModel(BaseModel):
 
 class ShowUser(TunedModel):
     user_id: uuid.UUID
-    name: str
-    surname: str
+    avatar: Optional[str]
+    name: Optional[str]
+    surname: Optional[str]
+    birth_year: date
     email: EmailStr
 
     is_active: bool
+    created_at: Optional[datetime]
+    updated_at: Optional[datetime]
 
 
 class UserCreate(BaseModel):
-    name: str
-    surname: str
+    avatar: Optional[str]
+    name: Optional[str]
+    surname: Optional[str]
     email: EmailStr
+    birth_year: date
     password: str
 
 
@@ -59,9 +65,11 @@ class UpdatedUserResponse(BaseModel):
 
 
 class UpdateUserRequest(BaseModel):
+    avatar: Optional[str]
     name: Optional[constr(min_length=1)]
     surname: Optional[constr(min_length=1)]
     email: Optional[EmailStr]
+    birth_year: date
 
     @validator("name")
     def validate_name(cls, value):

@@ -15,7 +15,7 @@ from backend.src.account.user.models import User
 from backend.db.session import get_db
 from backend.src.account.auth.hashing import Hasher
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login/token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/token")
 
 logger = logging.getLogger(__name__)
 

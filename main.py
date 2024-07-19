@@ -9,7 +9,8 @@ from fastapi.staticfiles import StaticFiles
 from backend.config.settings import set
 from backend.src.account.user.api import user_router
 from backend.src.account.user.login_handler import login_router
-from backend.src.license.router import router as license_router
+from backend.src.regions.router import router as region_router
+from backend.src.departments.router import router as departments_router
 
 #########################
 # BLOCK WITH API ROUTES #
@@ -47,23 +48,29 @@ main_api_router = APIRouter()
 async def ping():
     return {"Success": "Салам алейкум на backend🚀"}
 
+main_api_router.include_router(
+    region_router,
+    prefix="/api",
+    tags=["REGIONS"]
+)
+
+main_api_router.include_router(
+    departments_router,
+    prefix="/api",
+    tags=["DEPARTMENTS"]
+)
+
 
 main_api_router.include_router(
     user_router,
-    prefix="/user",
+    prefix="/api",
     tags=["USER"]
 )
 
 main_api_router.include_router(
     login_router,
-    prefix="/login",
+    prefix="/api",
     tags=["LOGIN"]
-)
-
-main_api_router.include_router(
-    license_router,
-    prefix="/license",
-    tags=["LICENSE"]
 )
 
 
@@ -71,4 +78,4 @@ app.include_router(main_api_router)
 
 if __name__ == "__main__":
     # run app on the host and port
-    uvicorn.run(app, host="127.0.0.1", port=8009)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
