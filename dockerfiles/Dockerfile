@@ -1,22 +1,19 @@
-FROM python:3.9
+FROM python:3.9-slim
 
+# Установите рабочий каталог
 WORKDIR /app
 
-# Установка зависимостей
-COPY requirements.txt ./
+# Скопируйте файлы зависимостей
+COPY requirements.txt .
+
+# Установите зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Установка Poetry
-RUN curl -sSL https://install.python-poetry.org | python3 - && \
-    ln -s /root/.local/bin/poetry /usr/local/bin/poetry
-
-# Настройка Poetry
-COPY pyproject.toml poetry.lock ./
-RUN poetry config virtualenvs.create false && \
-    poetry install --no-root --no-dev
-
-# Копирование исходного кода
+# Скопируйте код приложения
 COPY . .
 
-# Запуск приложения
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Установите переменные окружения
+ENV PYTHONUNBUFFERED=1
+
+# Определите команду для запуска приложения
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
