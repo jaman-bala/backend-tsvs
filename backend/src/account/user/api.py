@@ -1,3 +1,5 @@
+import logging
+
 from logging import getLogger
 from typing import List
 from uuid import UUID
@@ -25,6 +27,7 @@ from backend.src.account.user.dals import User, UserDAL
 from backend.db.session import get_db
 
 logger = getLogger(__name__)
+logging.basicConfig(filename='log/user.log', level=logging.INFO)
 
 user_router = APIRouter()
 
