@@ -2,9 +2,6 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 from typing import AsyncGenerator
 
 from backend.config import settings
-from backend.src.account.user.models import BaseUser
-from backend.src.regions.models import BaseRegion
-from backend.src.departments.models import BaseDepartment
 
 async_engine = create_async_engine(
     url=settings.SQLALCHEMY_DATABASE_URL,
