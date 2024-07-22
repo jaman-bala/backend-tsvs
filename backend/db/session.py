@@ -17,8 +17,7 @@ async_engine = create_async_engine(
 async_session = sessionmaker(async_engine, expire_on_commit=False, class_=AsyncSession)
 
 BaseUser.metadata.create_all(async_engine)
-BaseRegion.metadata.create_all(async_engine)
-BaseDepartment.metadata.create_all(async_engine)
+
 
 
 async def get_db() -> AsyncGenerator:
