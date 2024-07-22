@@ -3,6 +3,9 @@ from sqlalchemy.orm import sessionmaker
 from typing import AsyncGenerator
 
 from backend.config import settings
+from backend.src.account.user.models import BaseUser
+from backend.src.regions.models import BaseRegion
+from backend.src.departments.models import BaseDepartment
 
 async_engine = create_async_engine(
     settings.SQLALCHEMY_DATABASE_URL,
@@ -12,6 +15,10 @@ async_engine = create_async_engine(
 )
 
 async_session = sessionmaker(async_engine, expire_on_commit=False, class_=AsyncSession)
+
+BaseUser.metadata.create_all(async_engine)
+BaseRegion.metadata.create_all(async_engine)
+BaseDepartment.metadata.create_all(async_engine)
 
 
 async def get_db() -> AsyncGenerator:
