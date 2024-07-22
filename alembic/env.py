@@ -76,11 +76,11 @@
 #     run_migrations_online()
 
 import os
-import asyncio
 from logging.config import fileConfig
-from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy import create_engine
+from sqlalchemy import pool
 from alembic import context
-from sqlalchemy.ext.asyncio import AsyncEngine
+
 
 from backend.src.account.user.models import BaseUser
 from backend.src.regions.models import BaseRegion
@@ -115,20 +115,18 @@ def run_migrations_offline() -> None:
 
 def run_migrations_online() -> None:
     """Run migrations in 'online' mode."""
-    async_engine = create_async_engine(url, echo=True, future=True)
+    # Create a synchronous engine for migrations
+    sync_engine = create_engine(url, echo=True, future=True, poolclass=pool.NullPool)
 
-    # Use an asynchronous context manager for the connection
-    async def run():
-        async with async_engine.begin() as connection:
-            context.configure(
-                connection=connection,
-                target_metadata=target_metadata
-            )
+    # Use a synchronous context manager for the connection
+    with sync_engine.connect() as connection:
+        context.configure(
+            connection=connection,
+            target_metadata=target_metadata
+        )
 
-            with context.begin_transaction():
-                context.run_migrations()
-
-    asyncio.run(run())
+        with context.begin_transaction():
+            context.run_migrations()
 
 
 if context.is_offline_mode():
