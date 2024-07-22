@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import sessionmaker
 from typing import AsyncGenerator
 
@@ -10,7 +11,7 @@ from backend.src.departments.models import BaseDepartment
 
 # Создание синхронного движка для создания таблиц
 sync_engine = create_engine(
-    settings.SQLALCHEMY_DATABASE_URL.replace('asyncpg', 'psycopg2'),
+    settings.SQLALCHEMY_DATABASE_URL.replace('asyncpg'),
     future=True,
     echo=True,
     execution_options={"isolation_level": "AUTOCOMMIT"},
