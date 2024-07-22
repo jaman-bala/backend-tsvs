@@ -19,8 +19,5 @@ COPY alembic /app/alembic
 # Установите переменные окружения
 ENV PYTHONUNBUFFERED=1
 
-# Выполните миграции Alembic
-RUN alembic upgrade head
-
 # Определите команду для запуска приложения
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

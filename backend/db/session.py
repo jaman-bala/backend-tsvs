@@ -1,8 +1,9 @@
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
-from typing import Generator
+from typing import AsyncGenerator
+from backend.config.settings import Settings
 
-from backend.config import settings
+settings = Settings()
 
 async_engine = create_async_engine(
     settings.SQLALCHEMY_DATABASE_URL,
@@ -11,13 +12,10 @@ async_engine = create_async_engine(
     execution_options={"isolation_level": "AUTOCOMMIT"},
 )
 
-async_session = sessionmaker(async_engine, expire_on_commit=False, class_=AsyncSession)
+async_session = sessionmaker(async_engine, expire_on_commit=False, class_=AsyncSession, future=True)
 
 
-async def get_db() -> Generator:
+async def get_db() -> AsyncGenerator:
     """Dependency for getting async session"""
-    try:
-        session: AsyncSession = async_session()
+    async with async_session() as session:
         yield session
-    finally:
-        await session.close()
