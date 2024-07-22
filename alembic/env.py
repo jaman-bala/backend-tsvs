@@ -1,7 +1,6 @@
 import os
 from logging.config import fileConfig
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import create_engine, pool
 from alembic import context
 
 from backend.src.account.user.models import BaseUser
@@ -21,9 +20,8 @@ target_metadata = (
 
 url = os.environ.get("SQLALCHEMY_DATABASE_URL", config.get_main_option("sqlalchemy.url"))
 
-
 def run_migrations_offline() -> None:
-
+    """Run migrations in 'offline' mode."""
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -34,34 +32,20 @@ def run_migrations_offline() -> None:
     with context.begin_transaction():
         context.run_migrations()
 
-
 def run_migrations_online() -> None:
-    """Run migrations in 'online' mode.
-
-    In this scenario we need to create an Engine
-    and associate a connection with the context.
-
-    """
-    config_section = config.get_section(config.config_ini_section)
-    config_section["sqlalchemy.url"] = url
-
-    connectable = engine_from_config(
-        config_section,
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
-    )
+    """Run migrations in 'online' mode."""
+    connectable = create_engine(url, echo=True, future=True, poolclass=pool.NullPool)
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection,
+            target_metadata=target_metadata
         )
 
         with context.begin_transaction():
             context.run_migrations()
 
-
 if context.is_offline_mode():
     run_migrations_offline()
 else:
     run_migrations_online()
-
