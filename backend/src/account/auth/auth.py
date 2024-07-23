@@ -1,5 +1,5 @@
 import logging
-from typing import Union
+from typing import Union, List
 from jose import jwt
 from jose import JWTError
 from fastapi import Depends
@@ -47,8 +47,8 @@ async def authenticate_user(
 
 
 async def get_current_user_from_token(
-        token: str = Depends(oauth2_scheme),
-        db: AsyncSession = Depends(get_db),
+    token: str = Depends(oauth2_scheme),
+    db: AsyncSession = Depends(get_db),
 ):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -59,7 +59,8 @@ async def get_current_user_from_token(
             token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
         )
         email: str = payload.get("sub")
-        logger.info("username/email extracted is %s", email)
+        roles: List[str] = payload.get("roles", [])
+        logger.info("username/email extracted is %s, roles are %s", email, roles)
         if email is None:
             raise credentials_exception
     except JWTError as e:
@@ -68,4 +69,5 @@ async def get_current_user_from_token(
     user = await _get_user_by_email_for_auth(email=email, db=db)
     if user is None:
         raise credentials_exception
+    user.roles = roles
     return user

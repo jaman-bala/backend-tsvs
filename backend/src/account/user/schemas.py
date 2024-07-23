@@ -37,7 +37,8 @@ class UserCreate(BaseModel):
     email: EmailStr
     birth_year: date
     password: str
-
+    is_active: bool
+    role: List[str]
 
     @validator("name")
     def validate_name(cls, value):
