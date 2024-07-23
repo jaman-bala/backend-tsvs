@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from backend.src.account.user.dals import User
-from backend.src.account.auth.auth import get_current_user_from_token
+#from backend.src.account.auth.auth import get_current_user_from_token
 from backend.db.session import get_db
 from backend.src.regions.schemas import RegionOUT, RegionCreate, RegionUpdate
 from backend.src.regions.models import Region
@@ -41,7 +41,7 @@ async def create_region(
 @router.get("/regions/", response_model=List[RegionOUT])
 async def read_regions(
         session: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
+    #    current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на создание нового элемента")
 
@@ -54,7 +54,7 @@ async def read_regions(
 async def get_regions(
         region_id: int,
         session: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
+    #    current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на создание нового элемента")
 
@@ -69,7 +69,7 @@ async def update_region(
         region_id: int,
         region_update: RegionUpdate,
         session: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
+   #     current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на создание нового элемента")
 
@@ -92,7 +92,7 @@ async def update_region(
 async def delete_region(
         region_id: int,
         session: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
+   #     current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на создание нового элемента")
 
