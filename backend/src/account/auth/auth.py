@@ -51,8 +51,8 @@ async def authenticate_user_by_token(token: str, db: AsyncSession) -> Union[User
 
 
 async def get_current_user_from_token(
-    token: str = Depends(oauth2_scheme),
-    db: AsyncSession = Depends(get_db),
+        token: str = Depends(oauth2_scheme),
+        db: AsyncSession = Depends(get_db),
 ):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -64,14 +64,14 @@ async def get_current_user_from_token(
         )
         email: str = payload.get("sub")
         roles: List[str] = payload.get("roles", [])
-        logger.info("username/email extracted is %s, roles are %s", email, roles)
         if email is None:
             raise credentials_exception
-    except JWTError as e:
-        logger.error(f"Error decoding JWT: {e}")
+    except JWTError:
         raise credentials_exception
+
     user = await _get_user_by_email_for_auth(email=email, db=db)
     if user is None:
         raise credentials_exception
+
     user.roles = roles
     return user
