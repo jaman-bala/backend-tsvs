@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from backend.src.account.user.dals import User
-from backend.src.account.auth.auth import authenticate_user_by_token
+from backend.src.account.auth.auth import authenticate_user_by_token, get_current_user_from_token
 from backend.db.session import get_db
 from backend.src.departments.schemas import DepartmentOUT, DepartmentCreate, DepartmentUpdate
 from backend.src.departments.models import Departments
