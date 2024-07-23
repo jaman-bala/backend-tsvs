@@ -7,7 +7,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.config import settings
-from backend.src.account.auth.auth import authenticate_user
+from backend.src.account.auth.auth import authenticate_user_by_token
 from backend.src.account.user.schemas import Token
 from backend.src.account.user.models import User
 from backend.db.session import get_db
@@ -31,7 +31,7 @@ async def login_for_access_token(
         form_data: OAuth2PasswordRequestForm = Depends(),
         db: AsyncSession = Depends(get_db)
 ):
-    user = await authenticate_user(form_data.username, form_data.password, db)
+    user = await authenticate_user_by_token(form_data.username, form_data.password, db)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

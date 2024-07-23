@@ -26,6 +26,7 @@ class ShowUser(TunedModel):
     email: EmailStr
 
     is_active: bool
+    role: List[str]
     created_at: Optional[datetime]
     updated_at: Optional[datetime]
 

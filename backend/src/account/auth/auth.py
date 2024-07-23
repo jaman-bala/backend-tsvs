@@ -25,24 +25,28 @@ async def _get_user_by_email_for_auth(email: str, db: AsyncSession):
     return await user_dal.get_user_by_email(email=email)
 
 
-async def authenticate_user(
-        email: str,
-        password: str,
-        db: AsyncSession
-) -> Union[User, None]:
+def decode_token(token: str):
+    try:
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        return payload
+    except JWTError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Could not validate credentials",
+        )
+
+
+async def authenticate_user_by_token(token: str, db: AsyncSession) -> Union[User, None]:
+    payload = decode_token(token)
+    email: str = payload.get("sub")
+    if email is None:
+        return None
+
+    # Получение пользователя по email
     user = await _get_user_by_email_for_auth(email=email, db=db)
     if user is None:
         return None
-    if not Hasher.verify_password(password, user.hashed_password):
-        return None
-    try:
-        await db.commit()
-    except Exception as e:
-        logger.error(f"Error committing transaction: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Internal Server Error"
-        )
+
     return user
 
 
