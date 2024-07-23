@@ -25,34 +25,30 @@ async def _get_user_by_email_for_auth(email: str, db: AsyncSession):
     return await user_dal.get_user_by_email(email=email)
 
 
-def decode_token(token: str):
-    try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        return payload
-    except JWTError:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Could not validate credentials",
-        )
-
-
-async def authenticate_user_by_token(token: str, db: AsyncSession) -> Union[User, None]:
-    payload = decode_token(token)
-    email: str = payload.get("sub")
-    if email is None:
-        return None
-
-    # Получение пользователя по email
+async def authenticate_user(
+        email: str,
+        password: str,
+        db: AsyncSession
+) -> Union[User, None]:
     user = await _get_user_by_email_for_auth(email=email, db=db)
     if user is None:
         return None
-
+    if not Hasher.verify_password(password, user.hashed_password):
+        return None
+    try:
+        await db.commit()
+    except Exception as e:
+        logger.error(f"Error committing transaction: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Internal Server Error"
+        )
     return user
 
 
 async def get_current_user_from_token(
-        token: str = Depends(oauth2_scheme),
-        db: AsyncSession = Depends(get_db),
+    token: str = Depends(oauth2_scheme),
+    db: AsyncSession = Depends(get_db),
 ):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -64,14 +60,14 @@ async def get_current_user_from_token(
         )
         email: str = payload.get("sub")
         roles: List[str] = payload.get("roles", [])
+        logger.info("username/email extracted is %s, roles are %s", email, roles)
         if email is None:
             raise credentials_exception
-    except JWTError:
+    except JWTError as e:
+        logger.error(f"Error decoding JWT: {e}")
         raise credentials_exception
-
     user = await _get_user_by_email_for_auth(email=email, db=db)
     if user is None:
         raise credentials_exception
-
     user.roles = roles
     return user

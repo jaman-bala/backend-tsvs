@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from backend.src.account.user.dals import User
-from backend.src.account.auth.auth import authenticate_user_by_token
+from backend.src.account.auth.auth import get_current_user_from_token
 from backend.db.session import get_db
 from backend.src.departments.schemas import DepartmentOUT, DepartmentCreate, DepartmentUpdate
 from backend.src.departments.models import Departments
@@ -21,7 +21,7 @@ logging.basicConfig(filename='log/departments.log', level=logging.INFO)
 async def post_departments(
     departments: DepartmentCreate,
     session: AsyncSession = Depends(get_db),
-    current_user: User = Depends(authenticate_user_by_token),
+    current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на создание нового отдела: %s", departments.title)
 
@@ -36,7 +36,7 @@ async def post_departments(
 @router.get("/departments/", response_model=List[DepartmentOUT])
 async def read_departments(
         session: AsyncSession = Depends(get_db),
-      #  current_user: User = Depends(get_current_user_from_token),
+        current_user: User = Depends(get_current_user_from_token),
 
 ):
     logger.info("Получен запрос на создание нового элемента")
@@ -49,7 +49,7 @@ async def read_departments(
 async def get_departments(
         departments_id: int,
         session: AsyncSession = Depends(get_db),
-   #     current_user: User = Depends(get_current_user_from_token),
+        current_user: User = Depends(get_current_user_from_token),
 
 ):
     logger.info("Получен запрос на создание нового элемента")
@@ -65,7 +65,7 @@ async def update_departments(
         departments_id: int,
         departments_update: DepartmentUpdate,
         session: AsyncSession = Depends(get_db),
-    #    current_user: User = Depends(get_current_user_from_token),
+        current_user: User = Depends(get_current_user_from_token),
 
 ):
     logger.info("Получен запрос на создание нового элемента")
@@ -84,7 +84,7 @@ async def update_departments(
 async def delete_departments(
         departments_id: int,
         session: AsyncSession = Depends(get_db),
-    #    current_user: User = Depends(get_current_user_from_token),
+        current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на создание нового элемента")
 
