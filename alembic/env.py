@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from alembic import context
 
 from backend.src.account.user.models import BaseUser
+
 from backend.src.regions.models import BaseRegion
 from backend.src.departments.models import BaseDepartment
 

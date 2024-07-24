@@ -4,10 +4,10 @@ from typing import Optional, List
 from datetime import date, datetime
 from fastapi import HTTPException
 from pydantic import BaseModel
-from pydantic import constr
 from pydantic import EmailStr
 from pydantic import validator
 
+from backend.src.account.user.models import PortalRole
 
 LETTER_MATCH_PATTERN = re.compile(r"[a-zA-Zа-яА-Я\-]+$")
 
@@ -19,27 +19,40 @@ class TunedModel(BaseModel):
 
 class ShowUser(TunedModel):
     user_id: uuid.UUID
-    avatar: Optional[str]
-    name: Optional[str]
-    surname: Optional[str]
-    birth_year: date
+
+    name: Optional[str] = None
+    surname: Optional[str] = None
+    middle_name: Optional[str] = None
+    birth_year: Optional[date] = None
+
     email: EmailStr
+    inn: Optional[int] = None
+    avatar: Optional[str] = None
+    job_title: Optional[str] = None
 
     is_active: bool
-    role: List[str]
-    created_at: Optional[datetime]
-    updated_at: Optional[datetime]
+    roles: List[PortalRole]
+    created_at: datetime
+    updated_at: datetime
 
 
 class UserCreate(BaseModel):
-    avatar: Optional[str]
-    name: Optional[str]
-    surname: Optional[str]
+    name: Optional[str] = None
+    surname: Optional[str] = None
+    middle_name: Optional[str] = None
+    birth_year: Optional[date] = None
+
     email: EmailStr
-    birth_year: date
     password: str
+
+    inn: Optional[int] = None
+    avatar: Optional[str] = None
+    job_title: Optional[str] = None
+
     is_active: bool
-    role: List[str]
+    roles: List[PortalRole]
+    created_at: datetime
+    updated_at: datetime
 
     @validator("name")
     def validate_name(cls, value):
@@ -67,11 +80,18 @@ class UpdatedUserResponse(BaseModel):
 
 
 class UpdateUserRequest(BaseModel):
-    avatar: Optional[str]
-    name: Optional[constr(min_length=1)]
-    surname: Optional[constr(min_length=1)]
-    email: Optional[EmailStr]
-    birth_year: date
+    name: Optional[str] = None
+    surname: Optional[str] = None
+    middle_name: Optional[str] = None
+    birth_year: Optional[date] = None
+
+    email: EmailStr
+    inn: Optional[int] = None
+    avatar: Optional[str] = None
+    job_title: Optional[str] = None
+
+    is_active: bool
+    role: List[str]
 
     @validator("name")
     def validate_name(cls, value):

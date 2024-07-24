@@ -12,7 +12,7 @@ from backend.src.account.user.models import User
 from backend.src.account.auth.hashing import Hasher
 
 
-async def _get_all_users(session: AsyncSession) -> List[User]:
+async def _get_all_users(session: AsyncSession) -> ShowUser:
     query = select(User)
     res = await session.execute(query)
     return res.scalars().all()
@@ -22,26 +22,40 @@ async def _create_new_user(body: UserCreate, session: AsyncSession) -> ShowUser:
     async with session.begin():
         user_dal = UserDAL(session)
         user = await user_dal.create_user(
-            avatar=body.avatar,
             name=body.name,
             surname=body.surname,
-            email=body.email,
+            middle_name=body.middle_name,
             birth_year=body.birth_year,
+
+            email=body.email,
+            inn=body.inn,
+            avatar=body.avatar,
+            job_title=body.job_title,
+
             hashed_password=Hasher.get_password_hash(body.password),
-            roles=[
-                PortalRole.ROLE_PORTAL_USER,
-            ],
+            roles=body.roles,
+            # roles=[
+            #     PortalRole.ROLE_PORTAL_USER,
+            # ],
+
         )
         return ShowUser(
             user_id=user.user_id,
-            avatar=user.avatar,
+
             name=user.name,
             surname=user.surname,
-            email=user.email,
+            middle_name=user.middle_name,
             birth_year=user.birth_year,
+
+            email=user.email,
+            inn=user.inn,
+            avatar=user.avatar,
+            job_title=user.job_title,
+
             is_active=user.is_active,
             created_at=user.created_at,
-            updated_at=user.updated_at
+            updated_at=user.updated_at,
+            roles=user.roles,
         )
 
 

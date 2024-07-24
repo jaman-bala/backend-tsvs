@@ -11,7 +11,7 @@ from fastapi import status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.src.account.auth.auth import get_current_user_from_token
+from backend.src.account.auth.jwt import get_current_user_from_token
 from backend.src.account.user.crud import _create_new_user
 from backend.src.account.user.crud import _delete_user
 from backend.src.account.user.crud import _get_user_by_id
@@ -39,8 +39,10 @@ async def get_all_user(
 ) -> List[ShowUser]:
     all_users = await _get_all_users(db)
     if not all_users:
-        return []
-    return [ShowUser(**user.__dict__) for user in all_users]
+        raise HTTPException(
+            status_code=404, detail=f"Колдонучулар жок."
+        )
+    return all_users
 
 
 @user_router.get("/user/{user_id}", response_model=ShowUser)
@@ -66,7 +68,7 @@ async def create_user(
         return await _create_new_user(body, db)
     except IntegrityError as err:
         logger.error(err)
-        raise HTTPException(status_code=503, detail=f"database error: {err}")
+        raise HTTPException(status_code=503, detail=f"EMAIL уже существует!")
 
 
 @user_router.put("/user/{user_id}", response_model=ShowUser)
@@ -74,7 +76,7 @@ async def update_user(
         user_id: UUID,
         body: UpdateUserRequest,
         db: AsyncSession = Depends(get_db),
- #       current_user: User = Depends(get_current_user_from_token)
+        current_user: User = Depends(get_current_user_from_token)
 ) -> ShowUser:
     user_to_update = await _get_user_by_id(user_id, db)
     if user_to_update is None:

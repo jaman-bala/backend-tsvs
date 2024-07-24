@@ -1,14 +1,15 @@
-from sqlalchemy import Boolean, Column, String, Enum, JSON, DateTime, Date
+from sqlalchemy import Boolean, Column, String, Enum, JSON, DateTime, Date, Integer
 from sqlalchemy.orm import declarative_base
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, ARRAY
 from datetime import datetime
 import uuid
+import enum
 
 
 BaseUser = declarative_base()
 
 
-class PortalRole(str, Enum):
+class PortalRole(str, enum.Enum):
     ROLE_PORTAL_USER = "ROLE_PORTAL_USER"
     ROLE_PORTAL_ADMIN = "ROLE_PORTAL_ADMIN"
     ROLE_PORTAL_SUPERADMIN = "ROLE_PORTAL_SUPERADMIN"
@@ -19,15 +20,22 @@ class User(BaseUser):
     __tablename__ = "users"
 
     user_id = Column(UUID, primary_key=True, default=uuid.uuid4)
-    avatar = Column(String, nullable=True)
+
     name = Column(String, nullable=False)
     surname = Column(String, nullable=False)
+    middle_name = Column(String, nullable=False)
     birth_year = Column(Date, nullable=True)
+
     email = Column(String, nullable=False, unique=True)
     hashed_password = Column(String, nullable=False)
 
+    inn = Column(Integer, nullable=False)
+    avatar = Column(String, nullable=True)
+    job_title = Column(String, nullable=False)
+
     is_active = Column(Boolean(), default=True)
-    roles = Column(JSON, nullable=False)
+    # roles = Column(JSON, nullable=False, default="ROLE_PORTAL_USER")
+    roles = Column(ARRAY(String), nullable=False, default="ROLE_PORTAL_USER")
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

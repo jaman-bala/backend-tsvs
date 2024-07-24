@@ -1,6 +1,6 @@
 from typing import Union, List
 from uuid import UUID
-from datetime import date
+from datetime import date, datetime
 
 from sqlalchemy import and_
 from sqlalchemy import select
@@ -25,20 +25,31 @@ class UserDAL:
 
     async def create_user(
             self,
-            avatar: str,
             name: str,
             surname: str,
-            email: str,
+            middle_name: str,
             birth_year: date,
+
+            email: str,
+            inn: int,
+            avatar: str,
+            job_title: str,
+
             hashed_password: str,
             roles: List[PortalRole],
+
     ) -> User:
         new_user = User(
-            avatar=avatar,
             name=name,
             surname=surname,
-            email=email,
+            middle_name=middle_name,
             birth_year=birth_year,
+
+            email=email,
+            inn=inn,
+            avatar=avatar,
+            job_title=job_title,
+
             hashed_password=hashed_password,
             roles=roles,
         )
