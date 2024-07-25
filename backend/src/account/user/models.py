@@ -1,6 +1,6 @@
-from sqlalchemy import Boolean, Column, String, Enum, JSON, DateTime, Date, Integer
+from sqlalchemy import Boolean, Column, String, JSON, DateTime, Date, Integer
 from sqlalchemy.orm import declarative_base
-from sqlalchemy.dialects.postgresql import UUID, ARRAY
+from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
 import uuid
 import enum
