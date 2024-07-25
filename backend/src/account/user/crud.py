@@ -12,8 +12,8 @@ from backend.src.account.user.models import User
 from backend.src.account.auth.hashing import Hasher
 
 
-async def _get_all_users(session: AsyncSession) -> ShowUser:
-    query = select(User)
+async def _get_all_users(session: AsyncSession) -> List[ShowUser]:
+    query = select(User).where(User.is_active == True)
     res = await session.execute(query)
     return res.scalars().all()
 
@@ -76,7 +76,7 @@ async def _update_user(
 
 
 async def _get_user_by_id(user_id: UUID, session: AsyncSession) -> Union[User, None]:
-    query = select(User).where(User.user_id == user_id)
+    query = select(User).where(User.user_id == user_id, User.is_active == True)
     result = await session.execute(query)
     user = result.scalar_one_or_none()
     return user
