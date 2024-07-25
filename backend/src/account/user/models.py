@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, String, JSON, DateTime, Date, Integer
+from sqlalchemy import Boolean, Column, String, JSON, DateTime, Date
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
@@ -29,7 +29,7 @@ class User(BaseUser):
     email = Column(String, nullable=False, unique=True)
     hashed_password = Column(String, nullable=False)
 
-    inn = Column(Integer, nullable=False)
+    inn = Column(String(14), nullable=False)
     avatar = Column(String, nullable=True)
     job_title = Column(String, nullable=False)
 
