@@ -10,7 +10,7 @@ services:
     command: uvicorn main:app --host 0.0.0.0 --port 8000
     volumes:
       - ./media:/app/media
-      - /opt/backend/static:/app/backend/static
+      - ./static:/app/static
     env_file: .env.example
     ports:
       - "8000:8000"
