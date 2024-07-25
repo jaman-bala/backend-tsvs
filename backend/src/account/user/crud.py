@@ -59,12 +59,13 @@ async def _create_new_user(body: UserCreate, session: AsyncSession) -> ShowUser:
         )
 
 
-async def _delete_user(user_id: UUID, session: AsyncSession) -> Union[UUID, None]:
-    user_dal = UserDAL(session)
-    deleted_user_id = await user_dal.delete_user(
-        user_id=user_id,
-    )
-    return deleted_user_id
+async def _delete_user(user_id, session) -> Union[UUID, None]:
+    async with session.begin():
+        user_dal = UserDAL(session)
+        deleted_user_id = await user_dal.delete_user(
+            user_id=user_id,
+        )
+        return deleted_user_id
 
 
 async def _update_user(

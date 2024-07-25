@@ -104,11 +104,11 @@ async def update_user(
         raise HTTPException(status_code=503, detail=f"database error: {err}")
 
 
-@user_router.delete("/user", response_model=DeleteUserResponse)
+@user_router.delete("/", response_model=DeleteUserResponse)
 async def delete_user(
-        user_id: UUID,
-        db: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token)
+    user_id: UUID,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user_from_token)
 ) -> DeleteUserResponse:
     user_for_deletion = await _get_user_by_id(user_id, db)
     if user_for_deletion is None:
