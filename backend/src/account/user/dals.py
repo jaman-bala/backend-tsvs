@@ -1,16 +1,22 @@
-from typing import Union, List
+import logging
+
+from logging import getLogger
+from typing import Union, List, Dict
 from uuid import UUID
 from datetime import date, datetime
+from fastapi import HTTPException
 
-from sqlalchemy import and_
 from sqlalchemy import select
+from sqlalchemy import delete
 from sqlalchemy import update
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.src.account.auth.hashing import Hasher
 from backend.src.account.user.models import PortalRole
 from backend.src.account.user.models import User
 
+logger = getLogger(__name__)
+logging.basicConfig(filename='log/user.log', level=logging.INFO)
 
 ###########################################################
 # BLOCK FOR INTERACTION WITH DATABASE IN BUSINESS CONTEXT #
@@ -58,16 +64,31 @@ class UserDAL:
         return new_user
 
     async def delete_user(self, user_id: UUID) -> Union[UUID, None]:
-        query = (
-            update(User)
-            .where(and_(User.user_id == user_id, User.is_active == True))
-            .values(is_active=False)
-            .returning(User.user_id)
-        )
-        res = await self.db_session.execute(query)
-        deleted_user_id_row = res.fetchone()
-        if deleted_user_id_row is not None:
-            return deleted_user_id_row[0]
+        try:
+            query = (
+                delete(User)
+                .where(User.user_id == user_id)
+                .returning(User.user_id)
+            )
+            result = await self.db_session.execute(query)
+            deleted_user_id_row = result.fetchone()
+            if deleted_user_id_row:
+                await self.db_session.commit()
+                return deleted_user_id_row[0]
+            else:
+                await self.db_session.rollback()
+                return None
+        except SQLAlchemyError as e:
+            await self.db_session.rollback()
+            raise HTTPException(status_code=500, detail=f"Database delete error: {str(e)}")
+
+    async def disable_user(self, user_id: UUID) -> Union[UUID, None]:
+        user = await self.db_session.get(User, user_id)
+        if user:
+            user.is_active = False
+            await self.db_session.commit()
+            return user_id
+        return None
 
     async def get_user_by_id(self, user_id: UUID) -> Union[User, None]:
         query = select(User).where(User.user_id == user_id)
@@ -83,26 +104,25 @@ class UserDAL:
         if user_row is not None:
             return user_row[0]
 
-    async def update_user(self, user_id: UUID, **kwargs) -> Union[UUID, None]:
-        query = (
-            update(User)
-            .where(and_(User.user_id == user_id, User.is_active == True))
-            .values(kwargs)
-            .returning(User.user_id)
-        )
-        res = await self.db_session.execute(query)
-        update_user_id_row = res.fetchone()
-        if update_user_id_row is not None:
-            return update_user_id_row[0]
+    async def update_user(self, user_id: UUID, updated_user_data: Dict[str, any]) -> None:
+        try:
+            # Получение пользователя
+          #  query = select(User).where(User.user_id == user_id, User.is_active == True) если нужно по is_active = True
+            query = select(User).where(User.user_id == user_id, User.is_active == True)
+            result = await self.db_session.execute(query)
+            user = result.scalar_one_or_none()
 
-    async def reset_password(self, user_id: UUID, new_password: str) -> Union[UUID, None]:
-        query = (
-            update(User)
-            .where(User.user_id == user_id)
-            .values(hashed_password=Hasher.get_password_hash(new_password))
-            .returning(User.user_id)
-        )
-        res = await self.db_session.execute(query)
-        updated_user_id_row = res.fetchone()
-        if updated_user_id_row is not None:
-            return updated_user_id_row[0]
+            if user is None:
+                raise HTTPException(status_code=404, detail="User not found")
+
+            # Обновление данных пользователя
+            for key, value in updated_user_data.items():
+                setattr(user, key, value)
+            user.updated_at = datetime.utcnow()  # Обновляем дату изменения
+
+            # Сохранение изменений
+            await self.db_session.commit()  # Коммит транзакции
+
+        except SQLAlchemyError as e:
+            raise HTTPException(status_code=500, detail=f"Database update error: {str(e)}")
+

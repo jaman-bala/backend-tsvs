@@ -28,6 +28,7 @@ class RegionSchemas(RegionBase):
 class RegionOUT(RegionBase):
     id: int
     title: str
+    is_active: bool
 
     class Config:
         orm_mode = True

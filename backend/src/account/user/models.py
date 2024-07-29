@@ -35,7 +35,6 @@ class User(BaseUser):
 
     is_active = Column(Boolean(), default=True)
     roles = Column(JSON, nullable=False, default="ROLE_PORTAL_USER")
-    # roles = Column(ARRAY(Enum(PortalRole)), nullable=False, default=lambda: [PortalRole.ROLE_PORTAL_USER])
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

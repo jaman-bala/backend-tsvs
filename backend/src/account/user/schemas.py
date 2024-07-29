@@ -77,6 +77,7 @@ class DeleteUserResponse(BaseModel):
 
 class UpdatedUserResponse(BaseModel):
     updated_user_id: uuid.UUID
+    message: Optional[str] = None
 
 
 class UpdateUserRequest(BaseModel):
@@ -91,7 +92,7 @@ class UpdateUserRequest(BaseModel):
     job_title: Optional[str] = None
 
     is_active: bool
-    role: List[str]
+    roles: List[PortalRole]
 
     @validator("name")
     def validate_name(cls, value):
@@ -112,6 +113,7 @@ class UpdateUserRequest(BaseModel):
 
 class ResetPasswordRequest(BaseModel):
     new_password: str
+    confirm_password: str
 
 
 class Token(BaseModel):

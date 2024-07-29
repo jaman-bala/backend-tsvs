@@ -13,6 +13,6 @@ class Departments(BaseDepartment):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, unique=True, index=True, nullable=True)
 
-    is_active = Column(Boolean(), default=True)
+    is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

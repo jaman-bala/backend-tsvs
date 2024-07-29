@@ -50,20 +50,20 @@ async def ping():
 
 main_api_router.include_router(
     region_router,
-    prefix="/api",
+    prefix="/regions",
     tags=["REGIONS"]
 )
 
 main_api_router.include_router(
     departments_router,
-    prefix="/api",
+    prefix="/departments",
     tags=["DEPARTMENTS"]
 )
 
 
 main_api_router.include_router(
     user_router,
-    prefix="/api",
+    prefix="/users",
     tags=["USER"]
 )
 
