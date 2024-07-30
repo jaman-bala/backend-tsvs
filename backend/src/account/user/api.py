@@ -1,14 +1,19 @@
 import logging
+import aiofiles
 
+from datetime import date
 from logging import getLogger
-from typing import List
+from typing import List, Optional
 from uuid import UUID
 
 from fastapi import APIRouter
+from fastapi import File, Form
+from fastapi import UploadFile
 from fastapi import Depends
 from fastapi import HTTPException
 from fastapi import status
-from sqlalchemy.exc import IntegrityError
+from pydantic import EmailStr
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.src.account.auth.hashing import Hasher
@@ -20,6 +25,7 @@ from backend.src.account.user.crud import _get_user_by_id
 from backend.src.account.user.crud import _get_as_active
 from backend.src.account.user.crud import _get_all_users
 from backend.src.account.user.crud import check_user_permissions
+from backend.src.account.user.enums import PortalRole
 from backend.src.account.user.schemas import DeleteUserResponse, ResetPasswordRequest
 from backend.src.account.user.schemas import ShowUser
 from backend.src.account.user.schemas import UpdateUserRequest
@@ -37,15 +43,60 @@ user_router = APIRouter()
 
 @user_router.post("/create", response_model=ShowUser)
 async def create_user(
-        body: UserCreate,
-        db: AsyncSession = Depends(get_db),
-
+        name: str = Form(...),
+        surname: str = Form(...),
+        middle_name: str = Form(...),
+        birth_year: date = Form(...),
+        email: str = Form(...),
+        password: str = Form(...),
+        inn: int = Form(...),
+        job_title: str = Form(...),
+        roles: List[str] = Form(...),
+        avatar: UploadFile = File(None),
+        db: AsyncSession = Depends(get_db)
 ) -> ShowUser:
+    user_dal = UserDAL(db)
+    hashed_password = Hasher.get_password_hash(password)
+
+    # Process avatar file
+    avatar_filename = None
+    if avatar:
+        try:
+            avatar_filename = f"static/avatars/{avatar.filename}"
+            async with aiofiles.open(avatar_filename, "wb") as buffer:
+                content = await avatar.read()
+                await buffer.write(content)
+        except Exception as e:
+            logger.error(f"Error saving avatar file: {e}")
+            raise HTTPException(status_code=500, detail="Error saving avatar file")
+
     try:
-        return await _create_new_user(body, db)
+        async with db.begin():  # Ensure transaction scope
+            new_user = await user_dal.create_user(
+                name=name,
+                surname=surname,
+                middle_name=middle_name,
+                birth_year=birth_year,
+                email=email,
+                inn=inn,
+                avatar=avatar_filename,
+                job_title=job_title,
+                hashed_password=hashed_password,
+                roles=roles,
+            )
+            return new_user
     except IntegrityError as err:
-        logger.error(err)
-        raise HTTPException(status_code=503, detail=f"EMAIL уже существует!")
+        logger.error(f"IntegrityError: {err}")
+        await db.rollback()
+        raise HTTPException(status_code=400, detail="Email already exists!")
+    except SQLAlchemyError as err:
+        logger.error(f"SQLAlchemyError: {err}")
+        await db.rollback()
+        raise HTTPException(status_code=500, detail="Database error occurred")
+    except Exception as err:
+        logger.error(f"Unexpected error: {err}")
+        await db.rollback()
+        raise HTTPException(status_code=500, detail="An unexpected error occurred")
 
 
 @user_router.get("/all/", response_model=List[ShowUser])
@@ -90,31 +141,64 @@ async def get_user_by_id(
 
 @user_router.put("/update/{user_id}", response_model=ShowUser)
 async def update_user(
-    user_id: UUID,
-    user_update: UpdateUserRequest,
-    db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(get_current_user_from_token)
+        user_id: UUID,
+        name: str = Form(...),
+        surname: str = Form(...),
+        middle_name: str = Form(...),
+        birth_year: date = Form(...),
+        email: EmailStr = Form(...),
+        inn: int = Form(...),
+        job_title: str = Form(...),
+        roles: List[str] = Form(...),
+        avatar: Optional[UploadFile] = File(None),
+        db: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user_from_token)
 ):
-    user_dal = UserDAL(db)  # Создание экземпляра UserDAL
-
-    # Получите пользователя по user_id
+    user_dal = UserDAL(db)
     target_user = await user_dal.get_user_by_id(user_id)
     if not target_user:
         raise HTTPException(status_code=404, detail="User not found")
 
-    # Проверьте разрешения
     if not check_user_permissions(target_user, current_user):
-        raise HTTPException(status_code=403, detail="У Вас нет прав для изминения.")
+        raise HTTPException(status_code=403, detail="You do not have permission to modify this user.")
+
+    avatar_filename = target_user.avatar
+    if avatar:
+        try:
+            avatar_filename = f"static/avatars/{avatar.filename}"
+            async with aiofiles.open(avatar_filename, "wb") as buffer:
+                content = await avatar.read()
+                await buffer.write(content)
+        except Exception as e:
+            logger.error(f"Error saving avatar file: {e}", exc_info=True)
+            raise HTTPException(status_code=500, detail="Error saving avatar file")
 
     try:
-        # Обновите пользователя
-        await user_dal.update_user(user_id, user_update.dict())
+        user_update_dict = {
+            'name': name,
+            'surname': surname,
+            'middle_name': middle_name,
+            'birth_year': birth_year,
+            'email': email,
+            'inn': inn,
+            'job_title': job_title,
+            'roles': roles,
+            'avatar': avatar_filename
+        }
+
+        # Удаляем ключи с None значениями
+        user_update_dict = {k: v for k, v in user_update_dict.items() if v is not None}
+
+        await user_dal.update_user(user_id, user_update_dict)
         # Верните обновленные данные
         return await user_dal.get_user_by_id(user_id)
+
     except HTTPException as e:
+        logger.error(f"HTTPException: {e.detail}", exc_info=True)
         raise e
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"Error updating user: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Error updating user")
 
 
 @user_router.put("/update/roles/{user_id}", response_model=ShowUser)

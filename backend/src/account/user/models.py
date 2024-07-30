@@ -1,18 +1,13 @@
+import uuid
+
 from sqlalchemy import Boolean, Column, String, JSON, DateTime, Date, BigInteger
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
-import uuid
-import enum
 
+from backend.src.account.user.enums import PortalRole
 
 BaseUser = declarative_base()
-
-
-class PortalRole(str, enum.Enum):
-    ROLE_PORTAL_USER = "ROLE_PORTAL_USER"
-    ROLE_PORTAL_ADMIN = "ROLE_PORTAL_ADMIN"
-    ROLE_PORTAL_SUPERADMIN = "ROLE_PORTAL_SUPERADMIN"
 
 
 class User(BaseUser):

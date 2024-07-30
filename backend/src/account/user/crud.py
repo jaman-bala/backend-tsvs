@@ -1,5 +1,6 @@
 from datetime import datetime
 from fastapi import HTTPException
+from fastapi import UploadFile
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -8,7 +9,7 @@ from uuid import UUID
 
 from backend.src.account.user.schemas import ShowUser
 from backend.src.account.user.schemas import UserCreate
-from backend.src.account.user.dals import UserDAL
+from backend.src.account.user.dals import UserDAL, logger
 from backend.src.account.user.models import PortalRole
 from backend.src.account.user.models import User
 from backend.src.account.auth.hashing import Hasher
@@ -103,6 +104,17 @@ async def _get_user_by_id(user_id: UUID, db: AsyncSession) -> Union[User, None]:
         result = await db.execute(query)
         user = result.scalar_one_or_none()
         return user
+
+
+async def _save_file_to_static(file: UploadFile) -> str:
+    try:
+        file_location = f"static/{file.filename}"
+        with open(file_location, "wb") as buffer:
+            buffer.write(file.file.read())
+        return file_location
+    except Exception as e:
+        logger.error(f"Ошибка сохранения файла: {e}")
+        raise HTTPException(status_code=500, detail="Не удалось сохранить файл")
 
 
 def check_user_permissions(target_user: User, current_user: User) -> bool:

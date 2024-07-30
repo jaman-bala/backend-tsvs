@@ -1,12 +1,14 @@
 import uvicorn
+import os
+
 from fastapi import FastAPI
 from fastapi.routing import APIRouter
 from fastapi.staticfiles import StaticFiles
-# from starlette_exporter import handle_metrics
-# from starlette_exporter import PrometheusMiddleware
-# from fastapi.middleware.cors import CORSMiddleware
+from starlette_exporter import handle_metrics
+from starlette_exporter import PrometheusMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
-from backend.config.settings import set
+from backend.config.settings import set, BASE_DIR
 from backend.src.account.user.api import user_router
 from backend.src.account.user.admin_privilege import admin_router
 from backend.src.account.user.login_handler import login_router
@@ -22,23 +24,27 @@ app = FastAPI(
     title=set.PROJECT_NAME,
     version=set.PROJECT_VERSION
 )
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount(
+    "/static",
+         StaticFiles(directory="static"),
+         name="static",
+    )
 
 
-# origins = [
-#     "http://localhost:3000",  # React app
-# ]
+origins = [
+    "http://localhost:3000",  # React app
+]
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
-# )
-# app.add_middleware(PrometheusMiddleware)
-# app.add_route("/metrics", handle_metrics)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.add_middleware(PrometheusMiddleware)
+app.add_route("/metrics", handle_metrics)
 
 # create the instance for the routes
 main_api_router = APIRouter()

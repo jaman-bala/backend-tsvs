@@ -1,10 +1,11 @@
 import logging
 
 from logging import getLogger
-from typing import Union, List, Dict
+from typing import Union, List, Dict, Optional
 from uuid import UUID
 from datetime import date, datetime
 from fastapi import HTTPException
+from fastapi import UploadFile
 
 from sqlalchemy import select
 from sqlalchemy import delete
@@ -38,7 +39,7 @@ class UserDAL:
 
             email: str,
             inn: int,
-            avatar: str,
+            avatar: Optional[UploadFile],
             job_title: str,
 
             hashed_password: str,

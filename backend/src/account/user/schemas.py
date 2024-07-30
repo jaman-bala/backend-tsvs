@@ -1,13 +1,15 @@
 import re
 import uuid
+
 from typing import Optional, List
 from datetime import date, datetime
 from fastapi import HTTPException
+from fastapi import UploadFile
 from pydantic import BaseModel
 from pydantic import EmailStr
 from pydantic import validator
 
-from backend.src.account.user.models import PortalRole
+from backend.src.account.user.enums import PortalRole
 
 LETTER_MATCH_PATTERN = re.compile(r"[a-zA-Zа-яА-Я\-]+$")
 
@@ -46,7 +48,6 @@ class UserCreate(BaseModel):
     password: str
 
     inn: Optional[int] = None
-    avatar: Optional[str] = None
     job_title: Optional[str] = None
 
     is_active: bool
@@ -92,7 +93,6 @@ class UpdateUserRequest(BaseModel):
 
     email: EmailStr
     inn: Optional[int] = None
-    avatar: Optional[str] = None
     job_title: Optional[str] = None
 
     is_active: bool
