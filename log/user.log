@@ -3855,3 +3855,52 @@ FROM users
 WHERE users.email = ?
 INFO:sqlalchemy.engine.Engine:[cached since 148s ago] ('dsadsadsadsadsadsa@example.com',)
 INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('mamala@gmail.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.src.account.auth.jwt:username/email extracted is mamala@gmail.com, roles are ['ROLE_PORTAL_SUPERADMIN']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 5.372s ago] ('mamala@gmail.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:backend.src.account.auth.jwt:username/email extracted is mamala@gmail.com, roles are ['ROLE_PORTAL_SUPERADMIN']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 33.87s ago] ('mamala@gmail.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.user_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00040s] ('4ebfd5a46ff643cbbdbb8f8052d001ba',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.user_id = ? AND users.is_active = 1
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ('4ebfd5a46ff643cbbdbb8f8052d001ba',)
+INFO:sqlalchemy.engine.Engine:UPDATE users SET roles=?, updated_at=? WHERE users.user_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ('["ROLE_PORTAL_ADMIN"]', '2024-07-30 04:20:47.885006', '4ebfd5a46ff643cbbdbb8f8052d001ba')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.user_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 0.1211s ago] ('4ebfd5a46ff643cbbdbb8f8052d001ba',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:backend.src.account.auth.jwt:username/email extracted is mamala@gmail.com, roles are ['ROLE_PORTAL_SUPERADMIN']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 49.76s ago] ('mamala@gmail.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[cached since 44.39s ago] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK

@@ -80,6 +80,10 @@ class UpdatedUserResponse(BaseModel):
     message: Optional[str] = None
 
 
+class RoleUpdate(BaseModel):
+    roles: List[PortalRole]
+
+
 class UpdateUserRequest(BaseModel):
     name: Optional[str] = None
     surname: Optional[str] = None

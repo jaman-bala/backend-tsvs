@@ -24,6 +24,7 @@ from backend.src.account.user.schemas import DeleteUserResponse, ResetPasswordRe
 from backend.src.account.user.schemas import ShowUser
 from backend.src.account.user.schemas import UpdateUserRequest
 from backend.src.account.user.schemas import UpdatedUserResponse
+from backend.src.account.user.schemas import RoleUpdate
 from backend.src.account.user.schemas import UserCreate
 from backend.src.account.user.dals import User, UserDAL
 from backend.db.session import get_db
@@ -91,6 +92,35 @@ async def get_user_by_id(
 async def update_user(
     user_id: UUID,
     user_update: UpdateUserRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user_from_token)
+):
+    user_dal = UserDAL(db)  # Создание экземпляра UserDAL
+
+    # Получите пользователя по user_id
+    target_user = await user_dal.get_user_by_id(user_id)
+    if not target_user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    # Проверьте разрешения
+    if not check_user_permissions(target_user, current_user):
+        raise HTTPException(status_code=403, detail="У Вас нет прав для изминения.")
+
+    try:
+        # Обновите пользователя
+        await user_dal.update_user(user_id, user_update.dict())
+        # Верните обновленные данные
+        return await user_dal.get_user_by_id(user_id)
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@user_router.put("/update/roles/{user_id}", response_model=ShowUser)
+async def update_user_role(
+    user_id: UUID,
+    user_update: RoleUpdate,
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user_from_token)
 ):
