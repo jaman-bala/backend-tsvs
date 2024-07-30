@@ -8,7 +8,9 @@ from fastapi.staticfiles import StaticFiles
 
 from backend.config.settings import set
 from backend.src.account.user.api import user_router
+from backend.src.account.user.admin_privilege import admin_router
 from backend.src.account.user.login_handler import login_router
+
 from backend.src.regions.router import router as region_router
 from backend.src.departments.router import router as departments_router
 
@@ -65,6 +67,12 @@ main_api_router.include_router(
     user_router,
     prefix="/users",
     tags=["USER"]
+)
+
+main_api_router.include_router(
+    admin_router,
+    prefix="/admin",
+    tags=["ADMIN-PRIVILEGES"]
 )
 
 main_api_router.include_router(

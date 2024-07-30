@@ -10,8 +10,6 @@ from fastapi import HTTPException
 from fastapi import status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
-
 
 from backend.src.account.auth.hashing import Hasher
 from backend.src.account.auth.jwt import get_current_user_from_token
@@ -19,7 +17,6 @@ from backend.src.account.user.crud import _create_new_user
 from backend.src.account.user.crud import _delete_user
 from backend.src.account.user.crud import _disabled
 from backend.src.account.user.crud import _get_user_by_id
-from backend.src.account.user.crud import _update_user
 from backend.src.account.user.crud import _get_as_active
 from backend.src.account.user.crud import _get_all_users
 from backend.src.account.user.crud import check_user_permissions
@@ -161,118 +158,6 @@ async def disabled_user(
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
-@user_router.patch("/admin_privilege", response_model=UpdatedUserResponse)
-async def grand_admin_privilege(
-        user_id: UUID,
-        db: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
-):
-    if not current_user.is_superadmin:
-        raise HTTPException(status_code=403, detail="Forbidden.")
-    if current_user.user_id == user_id:
-        raise HTTPException(
-            status_code=400, detail="Cannot manage privileges of itself"
-        )
-    user_for_promotion = await _get_user_by_id(user_id, db)
-    if user_for_promotion.is_admin or user_for_promotion.is_superadmin:
-        raise HTTPException(
-            status_code=409,
-            detail=f"User with id {user_id} already promoted to admin / superadmin.",
-        )
-    if user_for_promotion is None:
-        raise HTTPException(
-            status_code=404,
-            detail="User with id {user_id} not found.",
-        )
-    updated_user_params = {
-        "roles": list(user_for_promotion.enrich_admin_roles_by_admin_role())
-    }
-    try:
-        # Избегайте использования async with db.begin(), если вы не уверены, что сессия не активна
-        updated_user_id = await _update_user(
-            updated_user_params=updated_user_params, session=db, user_id=user_id
-        )
-        # Возвращаем результат после успешного выполнения
-        return UpdatedUserResponse(updated_user_id=updated_user_id)
-    except IntegrityError as err:
-        logger.error(err)
-        raise HTTPException(status_code=503, detail=f"Database error: {err}")
-
-
-@user_router.delete("/admin_privilege", response_model=UpdatedUserResponse)
-async def revoke_admin_privilege(
-        user_id: UUID,
-        db: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
-):
-    if not current_user.is_superadmin:
-        raise HTTPException(status_code=403, detail="Forbidden.")
-    if current_user.user_id == user_id:
-        raise HTTPException(
-            status_code=400, detail="Cannot manage privileges of itself."
-        )
-    user_for_revoke_admin_privileges = await _get_user_by_id(user_id, db)
-    if not user_for_revoke_admin_privileges.is_admin:
-        raise HTTPException(
-            status_code=409, detail=f"User with id {user_id} has no admin privileges."
-        )
-    if user_for_revoke_admin_privileges is None:
-        raise HTTPException(
-            status_code=404, detail=f"User with id {user_id} not found."
-        )
-    updated_user_params = {
-        "roles": user_for_revoke_admin_privileges.remove_admin_privileges_from_model()
-    }
-    try:
-        updated_user_id = await _update_user(
-            updated_user_params=updated_user_params, session=db, user_id=user_id
-        )
-    except IntegrityError as err:
-        logger.error(err)
-        raise HTTPException(status_code=503, detail=f"Database error: {err}")
-    return UpdatedUserResponse(updated_user_id=updated_user_id)
-
-
-@user_router.patch("/user", response_model=UpdatedUserResponse)
-async def update_user_by_id(
-    user_id: UUID,
-    body: UpdateUserRequest,
-    db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(get_current_user_from_token),
-) -> UpdatedUserResponse:
-    updated_user_params = body.dict(exclude_none=True)
-    if updated_user_params == {}:
-        raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail="At least one parameter for user update info should be provided",
-        )
-    user_for_update = await _get_user_by_id(user_id, db)
-    if user_for_update is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"User with id {user_id} not found.",
-        )
-    if user_id != current_user.user_id:
-        if not check_user_permissions(
-            target_user=user_for_update,
-            current_user=current_user,
-        ):
-            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Forbidden")
-    try:
-        updated_user_id = await _update_user(
-            user_id=user_id,
-            updated_user_params=updated_user_params,
-            session=db
-        )
-    except IntegrityError as err:
-        logger.error(err)
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail=f"Database error: {err}",
-        )
-    return UpdatedUserResponse(updated_user_id=updated_user_id)
 
 
 @user_router.post("/reset-password", response_model=UpdatedUserResponse)
