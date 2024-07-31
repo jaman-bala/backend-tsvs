@@ -43,15 +43,15 @@ user_router = APIRouter()
 
 @user_router.post("/create", response_model=ShowUser)
 async def create_user(
-        name: str = Form(...),
-        surname: str = Form(...),
-        middle_name: str = Form(...),
-        birth_year: date = Form(...),
-        email: str = Form(...),
+        name: str = Form(None),
+        surname: str = Form(None),
+        middle_name: str = Form(None),
+        birth_year: date = Form(None),
+        email: EmailStr = Form(...),
         password: str = Form(...),
-        inn: int = Form(...),
-        job_title: str = Form(...),
-        roles: List[str] = Form(...),
+        inn: int = Form(None),
+        job_title: str = Form(None),
+        roles: List[PortalRole] = Form(None),
         avatar: UploadFile = File(None),
         db: AsyncSession = Depends(get_db)
 ) -> ShowUser:
@@ -142,14 +142,14 @@ async def get_user_by_id(
 @user_router.put("/update/{user_id}", response_model=ShowUser)
 async def update_user(
         user_id: UUID,
-        name: str = Form(...),
-        surname: str = Form(...),
-        middle_name: str = Form(...),
-        birth_year: date = Form(...),
-        email: EmailStr = Form(...),
-        inn: int = Form(...),
-        job_title: str = Form(...),
-        roles: List[str] = Form(...),
+        name: str = Form(None),
+        surname: str = Form(None),
+        middle_name: str = Form(None),
+        birth_year: date = Form(None),
+        email: EmailStr = Form(None),
+        inn: int = Form(None),
+        job_title: str = Form(None),
+        roles: List[PortalRole] = Form(None),
         avatar: Optional[UploadFile] = File(None),
         db: AsyncSession = Depends(get_db),
         current_user: User = Depends(get_current_user_from_token)
