@@ -13,8 +13,9 @@ from sqlalchemy import update
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from backend.src.account.user.models import PortalRole
+from backend.src.account.user.models import PortalRole, UserActionHistory
 from backend.src.account.user.models import User
+from backend.src.account.user.schemas import ActionHistorySchema
 
 logger = getLogger(__name__)
 logging.basicConfig(filename='log/user.log', level=logging.INFO)
@@ -62,6 +63,8 @@ class UserDAL:
         )
         self.db_session.add(new_user)
         await self.db_session.flush()
+        await self.log_action(user_id=new_user.user_id, action="Создание пользователя",
+                              details=f"Пользователь:  {new_user.email} создан")
         return new_user
 
     async def delete_user(self, user_id: UUID) -> Union[UUID, None]:
@@ -75,6 +78,10 @@ class UserDAL:
             deleted_user_id_row = result.fetchone()
             if deleted_user_id_row:
                 await self.db_session.commit()
+                await self.log_action(
+                    user_id=user_id,
+                    action="Удаление пользователя",
+                    details=f"Пользователь с ID {user_id} был удален",)
                 return deleted_user_id_row[0]
             else:
                 await self.db_session.rollback()
@@ -88,6 +95,11 @@ class UserDAL:
         if user:
             user.is_active = False
             await self.db_session.commit()
+            await self.log_action(
+                user_id=user_id,
+                action="User Disabled",
+                details=f"User with ID {user_id} was disabled",
+            )
             return user_id
         return None
 
@@ -123,7 +135,39 @@ class UserDAL:
 
             # Сохранение изменений
             await self.db_session.commit()  # Коммит транзакции
+            await self.log_action(user_id=user.user_id, name=user.name, action="Обновления пользователя",
+                                  details=f"Пользователь: {user.email} обновлён")
 
         except SQLAlchemyError as e:
             raise HTTPException(status_code=500, detail=f"Database update error: {str(e)}")
+
+    async def log_action(self, user_id: UUID, name: str, action: str, details: str = None):
+        try:
+            new_action = UserActionHistory(
+                user_id=user_id,
+                name=name,
+                action=action,
+                details=details,
+            )
+            self.db_session.add(new_action)
+            await self.db_session.commit()
+        except SQLAlchemyError as e:
+            logger.error(f"Error logging action: {e}", exc_info=True)
+            await self.db_session.rollback()
+            raise HTTPException(status_code=500, detail="Database error occurred while logging action")
+
+    async def get_all_history(self) -> List[ActionHistorySchema]:
+        try:
+            query = select(UserActionHistory)
+            result = await self.db_session.execute(query)
+            history = result.scalars().all()
+            return [ActionHistorySchema.from_orm(action) for action in history]
+        except SQLAlchemyError as e:
+            raise HTTPException(status_code=500, detail=f"Database error occurred: {str(e)}")
+
+    async def get_user_history(self, user_id: UUID):
+        query = select(UserActionHistory).filter(UserActionHistory.user_id == user_id).order_by(
+            UserActionHistory.timestamp.desc())
+        result = await self.db_session.execute(query)
+        return result.scalars().all()
 

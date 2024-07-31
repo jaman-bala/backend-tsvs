@@ -1,7 +1,7 @@
 import uuid
 
-from sqlalchemy import Boolean, Column, String, JSON, DateTime, Date, BigInteger
-from sqlalchemy.orm import declarative_base
+from sqlalchemy import Boolean, Column, String, JSON, DateTime, Date, BigInteger, ForeignKey
+from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
 
@@ -14,7 +14,7 @@ class User(BaseUser):
 
     __tablename__ = "users"
 
-    user_id = Column(UUID, primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID, primary_key=True, index=True, default=uuid.uuid4)
 
     name = Column(String, nullable=False)
     surname = Column(String, nullable=False)
@@ -34,6 +34,8 @@ class User(BaseUser):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    actions = relationship("UserActionHistory", back_populates="user")
+
     @property
     def is_superadmin(self) -> bool:
         return PortalRole.ROLE_PORTAL_SUPERADMIN in self.roles
@@ -50,3 +52,16 @@ class User(BaseUser):
         if self.is_admin:
             return {role for role in self.roles if role != PortalRole.ROLE_PORTAL_ADMIN}
 
+
+class UserActionHistory(BaseUser):
+
+    __tablename__ = "user_action_history"
+
+    id = Column(UUID, primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.user_id"), nullable=False)
+    name = Column(String, nullable=False)
+    action = Column(String, nullable=False)
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    details = Column(String, nullable=True)
+
+    user = relationship("User", back_populates="actions")

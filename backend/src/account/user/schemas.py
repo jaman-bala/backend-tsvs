@@ -115,6 +115,19 @@ class UpdateUserRequest(BaseModel):
         return value
 
 
+class ActionHistorySchema(BaseModel):
+    id: uuid.UUID
+    user_id: uuid.UUID
+    name: str
+    action: str
+    timestamp: datetime
+    details: str
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
 class ResetPasswordRequest(BaseModel):
     new_password: str
     confirm_password: str

@@ -26,7 +26,7 @@ from backend.src.account.user.crud import _get_as_active
 from backend.src.account.user.crud import _get_all_users
 from backend.src.account.user.crud import check_user_permissions
 from backend.src.account.user.enums import PortalRole
-from backend.src.account.user.schemas import DeleteUserResponse, ResetPasswordRequest
+from backend.src.account.user.schemas import DeleteUserResponse, ResetPasswordRequest, ActionHistorySchema
 from backend.src.account.user.schemas import ShowUser
 from backend.src.account.user.schemas import UpdateUserRequest
 from backend.src.account.user.schemas import UpdatedUserResponse
@@ -301,3 +301,25 @@ async def reset_password(
     await db.commit()
 
     return UpdatedUserResponse(updated_user_id=user_id, message="Пароль изменен")
+
+
+@user_router.get("/history/all", response_model=List[ActionHistorySchema])
+async def get_all_history(
+        db: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user_from_token)
+):
+
+    user_dal = UserDAL(db)
+    history = await user_dal.get_all_history()
+    return history
+
+
+@user_router.get("/history/{user_id}", response_model=List[ActionHistorySchema])
+async def get_user_history(
+        user_id: UUID,
+        db: AsyncSession = Depends(get_db),
+        current_user: User = Depends(get_current_user_from_token)
+):
+    user_dal = UserDAL(db)
+    history = await user_dal.get_user_history(user_id)
+    return history
