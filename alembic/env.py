@@ -7,6 +7,7 @@ from backend.src.account.user.models import BaseUser
 
 from backend.src.regions.models import BaseRegion
 from backend.src.departments.models import BaseDepartment
+from backend.src.ekzamens.models import BaseExam
 
 config = context.config
 
@@ -18,6 +19,7 @@ target_metadata = (
     BaseUser.metadata,
     BaseRegion.metadata,
     BaseDepartment.metadata,
+    BaseExam.metadata,
 )
 
 url = os.environ.get("SQLALCHEMY_DATABASE_URL" + "?async_fallback=True", config.get_main_option("sqlalchemy.url"))

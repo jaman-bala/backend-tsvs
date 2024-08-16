@@ -1,7 +1,8 @@
 import uvicorn
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import FileResponse
 from fastapi.routing import APIRouter
 from fastapi.staticfiles import StaticFiles
 from starlette_exporter import handle_metrics
@@ -15,6 +16,7 @@ from backend.src.account.user.login_handler import login_router
 
 from backend.src.regions.router import router as region_router
 from backend.src.departments.router import router as departments_router
+from backend.src.ekzamens.router import router as ezamens_router
 
 #########################
 # BLOCK WITH API ROUTES #
@@ -54,7 +56,7 @@ main_api_router = APIRouter()
 
 @main_api_router.get("/")
 async def ping():
-    return {"Success": "Салам алейкум на backend🚀"}
+    return FileResponse("static/404/404.jpg")
 
 main_api_router.include_router(
     region_router,
@@ -66,6 +68,12 @@ main_api_router.include_router(
     departments_router,
     prefix="/departments",
     tags=["DEPARTMENTS"]
+)
+
+main_api_router.include_router(
+    ezamens_router,
+    prefix="/exam",
+    tags=["EKZAMEN"]
 )
 
 
@@ -90,6 +98,7 @@ main_api_router.include_router(
 
 app.include_router(main_api_router)
 
+
 if __name__ == "__main__":
     # run app on the host and port
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8001)

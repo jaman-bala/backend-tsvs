@@ -4,7 +4,6 @@ import uuid
 from typing import Optional, List
 from datetime import date, datetime
 from fastapi import HTTPException
-from fastapi import UploadFile
 from pydantic import BaseModel
 from pydantic import EmailStr
 from pydantic import validator
@@ -33,6 +32,7 @@ class ShowUser(TunedModel):
     job_title: Optional[str] = None
 
     is_active: bool
+    is_superuser: bool
     roles: List[PortalRole]
     created_at: datetime
     updated_at: datetime
@@ -51,6 +51,7 @@ class UserCreate(BaseModel):
     job_title: Optional[str] = None
 
     is_active: bool
+    is_superuser: bool
     roles: List[PortalRole]
     created_at: datetime
     updated_at: datetime
@@ -96,6 +97,7 @@ class UpdateUserRequest(BaseModel):
     job_title: Optional[str] = None
 
     is_active: bool
+    is_superuser: bool
     roles: List[PortalRole]
 
     @validator("name")
@@ -133,6 +135,3 @@ class ResetPasswordRequest(BaseModel):
     confirm_password: str
 
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str

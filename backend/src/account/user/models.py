@@ -7,6 +7,7 @@ from datetime import datetime
 
 from backend.src.account.user.enums import PortalRole
 
+
 BaseUser = declarative_base()
 
 
@@ -29,12 +30,14 @@ class User(BaseUser):
     job_title = Column(String, nullable=False)
 
     is_active = Column(Boolean(), default=True)
+    is_superuser = Column(Boolean(), default=False)
     roles = Column(JSON, nullable=False, default="ROLE_PORTAL_USER")
 
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     actions = relationship("UserActionHistory", back_populates="user")
+    info_employees = relationship("InfoEmployees", back_populates="user")
 
     @property
     def is_superadmin(self) -> bool:
@@ -65,3 +68,4 @@ class UserActionHistory(BaseUser):
     details = Column(String, nullable=True)
 
     user = relationship("User", back_populates="actions")
+

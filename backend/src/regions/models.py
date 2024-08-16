@@ -24,5 +24,12 @@ class Region(BaseRegion):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # Связь с элементами (items)
-    # items = relationship("ItemLicense", back_populates="region")
+    def activate(self):
+        self.is_active = True
+
+    def deactivate(self):
+        self.is_active = False
+
+    def __str__(self):
+        return self.title
+

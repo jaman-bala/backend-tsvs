@@ -151,6 +151,7 @@ async def update_user(
         job_title: str = Form(None),
         roles: List[PortalRole] = Form(None),
         avatar: Optional[UploadFile] = File(None),
+        is_superuser: bool = Form(False),
         db: AsyncSession = Depends(get_db),
         current_user: User = Depends(get_current_user_from_token)
 ):
@@ -183,7 +184,8 @@ async def update_user(
             'inn': inn,
             'job_title': job_title,
             'roles': roles,
-            'avatar': avatar_filename
+            'avatar': avatar_filename,
+            'is_superuser': is_superuser,
         }
 
         # Удаляем ключи с None значениями

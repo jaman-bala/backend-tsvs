@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.config import settings
 from backend.src.account.auth.jwt import authenticate_user
-from backend.src.account.user.schemas import Token
+from backend.src.account.auth.schemas import Token
 from backend.src.account.user.models import User
 from backend.db.session import get_db
 from backend.src.account.auth.security import create_access_token

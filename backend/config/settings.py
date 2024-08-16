@@ -6,7 +6,7 @@ from pathlib import Path
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = Path(__file__).parent.parent
 UPLOAD_DIR = "media/file"
 
 
@@ -14,8 +14,21 @@ class Settings:
     PROJECT_NAME: str = "TSVS DATABASE 🔥"
     PROJECT_VERSION: str = "1.0.0"
 
+    class Config:
+        env_file = BASE_DIR / ".env"
+
 
 set = Settings()
+
+# class Settings(BaseSettings):
+#     PROJECT_NAME: str = "TSVS DATABASE 🔥"
+#     PROJECT_VERSION: str = "1.0.0"
+#
+#     class Config:
+#         env_file = BASE_DIR / ".env"
+#
+#
+# settings = Settings()
 
 
 SECRET_KEY: str = os.getenv("SECRET_KEY")

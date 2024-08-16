@@ -1,10 +1,11 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from datetime import datetime
 
 
 # Схема для регионов
 class RegionBase(BaseModel):
     title: str
+    is_active: bool
 
 
 class RegionCreate(RegionBase):
@@ -18,8 +19,8 @@ class RegionUpdate(RegionBase):
 class RegionSchemas(RegionBase):
     id: int
     is_active: bool
-    created_at: Optional[str]
-    updated_at: Optional[str]
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         orm_mode = True
@@ -29,6 +30,16 @@ class RegionOUT(RegionBase):
     id: int
     title: str
     is_active: bool
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        orm_mode = True
+
+
+class Is_activeShemasOUT(BaseModel):
+    is_active: bool
+    updated_at: datetime
 
     class Config:
         orm_mode = True

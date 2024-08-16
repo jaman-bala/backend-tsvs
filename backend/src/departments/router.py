@@ -1,15 +1,27 @@
 import logging
 
 from typing import List
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter
+from fastapi import HTTPException
+from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
 
 from backend.src.account.user.dals import User
 from backend.src.account.auth.jwt import get_current_user_from_token
 from backend.db.session import get_db
-from backend.src.departments.schemas import DepartmentOUT, DepartmentCreate, DepartmentUpdate
-from backend.src.departments.models import Departments
+from backend.src.departments.schemas import DepartmentOUT
+from backend.src.departments.schemas import DepartmentCreate
+from backend.src.departments.schemas import DepartmentUpdate
+from backend.src.departments.schemas import Is_activeShemasOUT
+
+from backend.src.departments.crud import _get_all_department
+from backend.src.departments.crud import _update_department
+from backend.src.departments.crud import _create_department
+from backend.src.departments.crud import _get_is_active
+from backend.src.departments.crud import _get_department_by_id
+from backend.src.departments.crud import _delete_department
+from backend.src.departments.crud import _disable_department
+
 
 router = APIRouter()
 
@@ -18,19 +30,14 @@ logging.basicConfig(filename='log/departments.log', level=logging.INFO)
 
 
 @router.post("/create/", response_model=DepartmentOUT)
-async def post_departments(
-    departments: DepartmentCreate,
+async def create_departments(
+    body: DepartmentCreate,
     session: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user_from_token),
 ):
-    logger.info("Получен запрос на создание нового отдела: %s", departments.title)
-
-    db_departments = Departments(**departments.dict())
-    session.add(db_departments)
-    await session.commit()
-    await session.refresh(db_departments)
-    logger.info("Новый отдел успешно создан: %s", db_departments.title)
-    return db_departments
+    logger.info("Получен запрос на создание нового отдела: %s", body.title)
+    new_department = await _create_department(body, session)
+    return new_department
 
 
 @router.get("/all/", response_model=List[DepartmentOUT])
@@ -40,87 +47,71 @@ async def read_departments(
 ):
     logger.info("Получен запрос на получение всех департаментов")
 
-    result = await session.execute(select(Departments))
-    departments = result.scalars().all()
-    return departments
+    all_departments = await _get_all_department(session)
+    return all_departments
 
 
 @router.get("/is_active/", response_model=List[DepartmentOUT])
-async def read_departments(
+async def read_active_departments(
         session: AsyncSession = Depends(get_db),
         current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на получение активных департаментов")
 
-    stmt = select(Departments).filter(Departments.is_active)
-    result = await session.execute(stmt)
-    departments = result.scalars().all()
-    return departments
+    is_active_department = await _get_is_active(session)
+    return is_active_department
 
 
 @router.get("/id/{departments_id}", response_model=DepartmentOUT)
-async def get_departments(
+async def get_departments_id(
         departments_id: int,
         session: AsyncSession = Depends(get_db),
         current_user: User = Depends(get_current_user_from_token),
 
 ):
-    logger.info("Получен запрос по id")
+    logger.info(f"Получен запрос по id {departments_id}")
 
-    departments = await session.get(Departments, departments_id)
-    if departments is None:
-        raise HTTPException(status_code=404, detail="Отдел не найден")
+    departments = await _get_department_by_id(departments_id, session)
     return departments
 
 
 @router.put("/update/{departments_id}", response_model=DepartmentOUT)
 async def update_departments(
-        departments_id: int,
-        departments_update: DepartmentUpdate,
-        session: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
-
+    departments_id: int,
+    departments_update: DepartmentUpdate,
+    session: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на обновление департамента")
 
-    departments = await session.get(Departments, departments_id)
-    if departments is None:
-        raise HTTPException(status_code=404, detail="Отдел не найден")
-
-    departments.title = departments_update.title
-
-    await session.commit()
-    return departments
+    updated_department = await _update_department(departments_id, departments_update, session)
+    return updated_department
 
 
 @router.delete("/delete/{departments_id}")
 async def delete_departments(
-        departments_id: int,
-        session: AsyncSession = Depends(get_db),
-        current_user: User = Depends(get_current_user_from_token),
+    departments_id: int,
+    session: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user_from_token),
 ):
     logger.info("Получен запрос на удаление отдела")
 
-    departments = await session.get(Departments, departments_id)
-    if departments is None:
-        raise HTTPException(status_code=404, detail="Отдел не найден")
-
-    departments.is_active = False
-
-    await session.commit()
-    return departments
+    await _delete_department(departments_id, session)
+    return {"detail": f"Депортамент {departments_id} удален"}
 
 
-@router.delete("/disabled/{region_id}")
-async def is_active(
+@router.delete("/disable/{departments_id}", response_model=Is_activeShemasOUT)
+async def disable_departments(
         departments_id: int,
         session: AsyncSession = Depends(get_db),
         current_user: User = Depends(get_current_user_from_token),
 ):
-    logger.info("Получен запрос на удаление региона")
-    departments = await session.get(Departments, departments_id)
-    if departments is None:
+    logger.info("Получен запрос на деактивацию департамента с id: %d", departments_id)
+
+    await _disable_department(departments_id, session)
+    updated_department_disabled = await _get_department_by_id(departments_id, session)
+
+    if updated_department_disabled is None:
         raise HTTPException(status_code=404, detail="Департамент не найден")
-    departments.is_active = False
-    await session.commit()
-    return {"message": f"Департамент {departments_id} не активный"}
+
+    return updated_department_disabled

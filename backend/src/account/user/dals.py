@@ -63,8 +63,11 @@ class UserDAL:
         )
         self.db_session.add(new_user)
         await self.db_session.flush()
-        await self.log_action(user_id=new_user.user_id, action="Создание пользователя",
-                              details=f"Пользователь:  {new_user.email} создан")
+        await self.log_action(
+            user_id=new_user.user_id,
+            action="Создание пользователя",
+            name=new_user.name,
+            details=f"Пользователь:  {new_user.email} создан")
         return new_user
 
     async def delete_user(self, user_id: UUID) -> Union[UUID, None]:
@@ -78,10 +81,6 @@ class UserDAL:
             deleted_user_id_row = result.fetchone()
             if deleted_user_id_row:
                 await self.db_session.commit()
-                await self.log_action(
-                    user_id=user_id,
-                    action="Удаление пользователя",
-                    details=f"Пользователь с ID {user_id} был удален",)
                 return deleted_user_id_row[0]
             else:
                 await self.db_session.rollback()
@@ -97,6 +96,7 @@ class UserDAL:
             await self.db_session.commit()
             await self.log_action(
                 user_id=user_id,
+                name=user.name,
                 action="User Disabled",
                 details=f"User with ID {user_id} was disabled",
             )
@@ -135,13 +135,17 @@ class UserDAL:
 
             # Сохранение изменений
             await self.db_session.commit()  # Коммит транзакции
-            await self.log_action(user_id=user.user_id, name=user.name, action="Обновления пользователя",
-                                  details=f"Пользователь: {user.email} обновлён")
+            await self.log_action(
+                user_id=user.user_id,
+                name=user.name,
+                action="Обновления пользователя",
+                details=f"Пользователь: {user.email} обновлён"
+            )
 
         except SQLAlchemyError as e:
             raise HTTPException(status_code=500, detail=f"Database update error: {str(e)}")
 
-    async def log_action(self, user_id: UUID, name: str, action: str, details: str = None):
+    async def log_action(self, user_id: UUID, name: str, action: str, details: str):
         try:
             new_action = UserActionHistory(
                 user_id=user_id,
