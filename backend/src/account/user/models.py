@@ -37,7 +37,6 @@ class User(BaseUser):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     actions = relationship("UserActionHistory", back_populates="user")
-    info_employees = relationship("InfoEmployees", back_populates="user")
 
     @property
     def is_superadmin(self) -> bool:

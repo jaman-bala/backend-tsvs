@@ -9994,3 +9994,1083 @@ INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, 
 FROM type_selections
 INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ()
 INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT categories.id, categories.title, categories.created_at 
+FROM categories
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, type_selections.created_at 
+FROM type_selections
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00070s] ('ec609e8222e446cba24848c91c656544', 'string', '2024-08-19 04:03:59.664421', None, None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ('ec609e8222e446cba24848c91c656544',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00041s] ('string', 1, '2024-08-19 04:03:59.815546', UUID('ec609e82-22e4-46cb-a248-48c91c656544'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00055s] ('9d4721a276b24362bb5a1c523c8e78d4', 'string', '2024-08-19 04:05:43.804531', None, None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ('9d4721a276b24362bb5a1c523c8e78d4',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ('string', 1, '2024-08-19 04:05:43.940676', UUID('9d4721a2-76b2-4362-bb5a-1c523c8e78d4'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00868s] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.id AS questions_1_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.id = answers.question_id 
+WHERE questions_1.id IN (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00146s] ('ec609e8222e446cba24848c91c656544', '9d4721a276b24362bb5a1c523c8e78d4')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 108.4s ago] ('fd82249178804d3795f75bccc87ea1ec', 'string', '2024-08-19 04:07:32.244491', None, None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 108.5s ago] ('fd82249178804d3795f75bccc87ea1ec',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 108.5s ago] ('string', 1, '2024-08-19 04:07:32.400063', UUID('fd822491-7880-4d37-95f7-5bccc87ea1ec'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('93c96cdb6ad549679196f4906578c827', 'dasdsadas', '2024-08-19 04:08:44.383319', None, None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00079s] ('93c96cdb6ad549679196f4906578c827',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ('string', 1, '2024-08-19 04:08:44.549199', UUID('93c96cdb-6ad5-4967-9196-f4906578c827'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('8639fbf3dbb24e53b07d60e9c17f4e7c', 'string', '2024-08-19 04:16:42.970931', None, None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('8639fbf3dbb24e53b07d60e9c17f4e7c',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00059s] ('string', 1, '2024-08-19 04:16:43.110517', UUID('8639fbf3-dbb2-4e53-b07d-60e9c17f4e7c'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00133s] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.id AS questions_1_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.id = answers.question_id 
+WHERE questions_1.id IN (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00136s] ('ec609e8222e446cba24848c91c656544', '9d4721a276b24362bb5a1c523c8e78d4', 'fd82249178804d3795f75bccc87ea1ec', '93c96cdb6ad549679196f4906578c827', '8639fbf3dbb24e53b07d60e9c17f4e7c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 80.28s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.id AS questions_1_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.id = answers.question_id 
+WHERE questions_1.id IN (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 80.26s ago] ('ec609e8222e446cba24848c91c656544', '9d4721a276b24362bb5a1c523c8e78d4', 'fd82249178804d3795f75bccc87ea1ec', '93c96cdb6ad549679196f4906578c827', '8639fbf3dbb24e53b07d60e9c17f4e7c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, type_selections.created_at 
+FROM type_selections
+INFO:sqlalchemy.engine.Engine:[generated in 0.00025s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 142.9s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.id AS questions_1_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.id = answers.question_id 
+WHERE questions_1.id IN (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 142.9s ago] ('ec609e8222e446cba24848c91c656544', '9d4721a276b24362bb5a1c523c8e78d4', 'fd82249178804d3795f75bccc87ea1ec', '93c96cdb6ad549679196f4906578c827', '8639fbf3dbb24e53b07d60e9c17f4e7c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.id AS questions_1_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.id = answers.question_id 
+WHERE questions_1.id IN (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('ec609e8222e446cba24848c91c656544', '9d4721a276b24362bb5a1c523c8e78d4', 'fd82249178804d3795f75bccc87ea1ec', '93c96cdb6ad549679196f4906578c827', '8639fbf3dbb24e53b07d60e9c17f4e7c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 107.2s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.id AS questions_1_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.id = answers.question_id 
+WHERE questions_1.id IN (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 107.2s ago] ('ec609e8222e446cba24848c91c656544', '9d4721a276b24362bb5a1c523c8e78d4', 'fd82249178804d3795f75bccc87ea1ec', '93c96cdb6ad549679196f4906578c827', '8639fbf3dbb24e53b07d60e9c17f4e7c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ('bb539bf32092453c9100483dc75b4e9c', 'string', '2024-08-19 04:29:33.495923', None, None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('bb539bf32092453c9100483dc75b4e9c',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('string', 1, '2024-08-19 04:29:33.655767', UUID('bb539bf3-2092-453c-9100-483dc75b4e9c'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00105s] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.id AS questions_1_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.id = answers.question_id 
+WHERE questions_1.id IN (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00183s] ('ec609e8222e446cba24848c91c656544', '9d4721a276b24362bb5a1c523c8e78d4', 'fd82249178804d3795f75bccc87ea1ec', '93c96cdb6ad549679196f4906578c827', '8639fbf3dbb24e53b07d60e9c17f4e7c', 'bb539bf32092453c9100483dc75b4e9c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ('ec609e8222e446cba24848c91c656544',)
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.id AS questions_1_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.id = answers.question_id 
+WHERE questions_1.id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 16.8s ago] ('ec609e8222e446cba24848c91c656544',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ('string', '2024-08-19 04:37:24.942878', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT categories.id, categories.title, categories.created_at 
+FROM categories
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, type_selections.created_at 
+FROM type_selections
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('string', '2024-08-19 05:05:43.057073', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 8.435s ago] ('string', '2024-08-19 05:05:51.491966', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 110.1s ago] ('string', '2024-08-19 05:07:33.194941', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00122s] ('string', '2024-08-19 05:09:28.867676', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] ('string', '2024-08-19 05:10:40.382306', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ('string', '2024-08-19 05:13:13.994268', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO categories (title, created_at) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ('Отдел ВС', '2024-08-19 05:14:28.494375')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT categories.id, categories.title, categories.created_at 
+FROM categories 
+WHERE categories.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO type_selections (title, created_at) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ('один ответ', '2024-08-19 05:14:46.274094')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, type_selections.created_at 
+FROM type_selections 
+WHERE type_selections.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('string', '2024-08-19 05:15:15.858636', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00042s] ('string', '2024-08-19 05:19:59.184523', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('string', '2024-08-19 05:21:06.155816', None, None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('string', '2024-08-19 05:25:14.634126', 1, 1)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00048s] ('string', '2024-08-19 05:26:21.600455', 1, 1)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 8.916s ago] ('string', '2024-08-19 05:26:30.517063', 1, 1)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO categories (title, created_at) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ('string', '2024-08-19 05:33:39.981164')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT categories.id, categories.title, categories.created_at 
+FROM categories 
+WHERE categories.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO type_selections (title, created_at) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00041s] ('string', '2024-08-19 05:33:45.302715')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, type_selections.created_at 
+FROM type_selections 
+WHERE type_selections.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00045s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('2e0c83afc6cf4b68bda534235d30d446', 'string', '2024-08-19 05:33:56.192012', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ('2e0c83afc6cf4b68bda534235d30d446',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00054s] ('98338208c5244ba888edc18bccf3b7ab', 'string', '2024-08-19 05:34:31.952016', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] ('98338208c5244ba888edc18bccf3b7ab',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('string', 1, '2024-08-19 05:34:32.122284', UUID('98338208-c524-4ba8-88ed-c18bccf3b7ab'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.01051s] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.question_id AS questions_1_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.question_id = answers.question_id 
+WHERE questions_1.question_id IN (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00077s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00052s] ('78709fa727974fc3a77074081e302729', 'test01', '2024-08-19 05:36:06.848958', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00026s] ('78709fa727974fc3a77074081e302729',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('mamalashka', 1, '2024-08-19 05:36:07.015695', UUID('78709fa7-2797-4fc3-a770-74081e302729'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.question_id AS questions_1_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.question_id = answers.question_id 
+WHERE questions_1.question_id IN (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00045s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 78.82s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.question_id AS questions_1_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.question_id = answers.question_id 
+WHERE questions_1.question_id IN (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 78.82s ago] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.question_id AS questions_1_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.question_id = answers.question_id 
+WHERE questions_1.question_id IN (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00040s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT answers.id, answers.text, answers.is_correct, answers.created_at, answers.question_id 
+FROM answers
+INFO:sqlalchemy.engine.Engine:[generated in 0.00051s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ('string', 1, '2024-08-19 05:40:42.483600', None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT answers.id, answers.text, answers.is_correct, answers.created_at, answers.question_id 
+FROM answers 
+WHERE answers.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00026s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00089s] ('2e25efa46cbf44aa8e2d974eb230a422', 'stdasdsadsaring', '2024-08-19 05:40:55.179076', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00024s] ('2e25efa46cbf44aa8e2d974eb230a422',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 12.87s ago] ('string', 1, '2024-08-19 05:40:55.352498', UUID('2e25efa4-6cbf-44aa-8e2d-974eb230a422'))
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00155s] ()
+INFO:sqlalchemy.engine.Engine:SELECT questions_1.question_id AS questions_1_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM questions AS questions_1 JOIN answers ON questions_1.question_id = answers.question_id 
+WHERE questions_1.question_id IN (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00139s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00048s] ('7f3856a9d36448fd923ed03ef9732b5b', 'ffsefsefse', '2024-08-19 05:46:27.667931', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00026s] ('7f3856a9d36448fd923ed03ef9732b5b',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] (UUID('208acc0e-ccaf-4367-bd75-67e7cf752cf2'), 'fsdfsd', 1, '2024-08-19 05:46:27.851066', '7f3856a9d36448fd923ed03ef9732b5b')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 29.45s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 29.45s ago] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 160.9s ago] ('ee241b2a315f4246ab587aeb08b7822b', 'ffdsfdsfsd', '2024-08-19 05:49:08.564850', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 161.5s ago] ('ee241b2a315f4246ab587aeb08b7822b',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 161.5s ago] (UUID('3908acf1-0789-4bee-b0b4-f5d8cd4cf985'), 'fsdfsd', 1, '2024-08-19 05:49:09.324237', 'ee241b2a315f4246ab587aeb08b7822b')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 198.7s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 198.7s ago] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ('ceb21378e36c47489238081b813dbd60', 'test02', '2024-08-19 05:51:19.125258', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ('ceb21378e36c47489238081b813dbd60',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00044s] (UUID('eb158582-64b3-4a1c-83bb-b1e6a78cf4b8'), 'test02', 1, '2024-08-19 05:51:19.268386', 'ceb21378e36c47489238081b813dbd60')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b', 'ceb21378e36c47489238081b813dbd60')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('d0c386873eaa4d58b626d0e50a733db3', 'test03', '2024-08-19 05:54:25.232520', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('d0c386873eaa4d58b626d0e50a733db3',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('f9d62fcae1414b9fae717437aa0de81c', 'test03', 1, '2024-08-19 05:54:25.407953', 'd0c386873eaa4d58b626d0e50a733db3')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00042s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b', 'ceb21378e36c47489238081b813dbd60', 'd0c386873eaa4d58b626d0e50a733db3')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 2459s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 2459s ago] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b', 'ceb21378e36c47489238081b813dbd60', 'd0c386873eaa4d58b626d0e50a733db3')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('4a9daf0e1fda4b14bb82d8c1458ecb57', 'string', 1, '2024-08-19 06:40:31.668323', None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b', 'ceb21378e36c47489238081b813dbd60', 'd0c386873eaa4d58b626d0e50a733db3')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('975ab12ca3e34d54a740c4af630f23e3', 'string', 1, '2024-08-19 06:42:36.010663', None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00052s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b', 'ceb21378e36c47489238081b813dbd60', 'd0c386873eaa4d58b626d0e50a733db3')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00044s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b', 'ceb21378e36c47489238081b813dbd60', 'd0c386873eaa4d58b626d0e50a733db3')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ('d0c386873eaa4d58b626d0e50a733db3',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 14.63s ago] ('d0c386873eaa4d58b626d0e50a733db3',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 196.7s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 196.7s ago] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b', 'ceb21378e36c47489238081b813dbd60', 'd0c386873eaa4d58b626d0e50a733db3')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ('d8731ea7201c459182895efe4378f052', 'Mamalashka01', '2024-08-19 06:52:18.938782', 1, 1)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('4b45ba16c2f14d9aaf891e5d6b494a97', 'Есть ли на земле светафор ?', 1, '2024-08-19 06:52:18.941773', None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00045s] ('2e0c83afc6cf4b68bda534235d30d446', '98338208c5244ba888edc18bccf3b7ab', '78709fa727974fc3a77074081e302729', '2e25efa46cbf44aa8e2d974eb230a422', '7f3856a9d36448fd923ed03ef9732b5b', 'ee241b2a315f4246ab587aeb08b7822b', 'ceb21378e36c47489238081b813dbd60', 'd0c386873eaa4d58b626d0e50a733db3')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 18.58s ago] ('2a2e98e517f1479186d115ba479a28d1', 'Mamalashka01', '2024-08-19 06:52:37.521868', 1, 1)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 18.58s ago] ('b81112ed66de400cae854bd7690729cf', 'Есть ли на земле светафор ?', 1, '2024-08-19 06:52:37.524815', None)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO categories (title, created_at) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00040s] ('string', '2024-08-19 07:01:19.424288')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT categories.id, categories.title, categories.created_at 
+FROM categories 
+WHERE categories.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00026s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO type_selections (title, created_at) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00112s] ('string', '2024-08-19 07:01:27.442187')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, type_selections.created_at 
+FROM type_selections 
+WHERE type_selections.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00717s] ('45c48de2e73f4209be361fe2d942eb95', 'test01', '2024-08-19 07:01:52.724362', 1, 1)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00117s] ('d15ffa08aebd465a93d264c534de7937', 'test01', 0, '2024-08-19 07:01:52.734335', None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00049s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00051s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00105s] ('ee7ce1764b4541978554e808ab31e69b', 'test02', '2024-08-19 07:04:59.657990', 1, 1)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('0de8433ca96d4588bede4e97f20d0714', 'test02', 1, '2024-08-19 07:04:59.671953', None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 37.28s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 37.28s ago] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('5bec2f5daa1c4798b76066d58f59789b', 'test03', '2024-08-19 07:05:53.614844', 1, 1)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('8d6f18acf2554980817ffe35a634485a', 'test03', 1, '2024-08-19 07:05:53.618860', None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00053s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00051s] ('0493d30fa05b44bb8088ba47cfbec979', 'test04', '2024-08-19 07:07:30.661508', 1, 1)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('1bc7b4f93d304b4ca2afe9648074a457', 'test04', 0, '2024-08-19 07:07:30.664500', None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('bfaed423bbe74886a27964962c397e33', 'test05', '2024-08-19 07:08:47.180703', 1, 1)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ('a966969beb204e1ea3620111917b7eda', 'test05', 0, '2024-08-19 07:08:47.183719', None)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00079s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00042s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ('b9077c78150e4760b285fed0b46db84c', 'test07', '2024-08-19 07:10:22.324696', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('b9077c78150e4760b285fed0b46db84c',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('c44a4b90b8dc410bb63935af6760d52d', 'test07', 1, '2024-08-19 07:10:22.473842', 'b9077c78150e4760b285fed0b46db84c')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00044s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 71.77s ago] ('f2ee50eb34ae40b5b9f3ec337ef18eb1', 'test08', '2024-08-19 07:11:34.091331', 1, 1)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 71.76s ago] ('f2ee50eb34ae40b5b9f3ec337ef18eb1',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?), (?, ?, ?, ?, ?), (?, ?, ?, ?, ?), (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00015s (insertmanyvalues) 1/1 (unordered)] ('0dff7b9e1de447d8a29bf28db0d6cbef', 'test1', 0, '2024-08-19 07:11:34.232702', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', '86385737d2b14fb78d5f461cd001d8a7', 'test2', 0, '2024-08-19 07:11:34.232702', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'd1a3e0d836dc4fa49c5629fc1ffb6ef1', 'test3', 0, '2024-08-19 07:11:34.232702', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', '9b992a84e51648e8bf7b7b7ef8c08aa9', 'test4', 1, '2024-08-19 07:11:34.232702', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 72.14s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 72.13s ago] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] ('f2ee50eb34ae40b5b9f3ec337ef18eb1',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 125.8s ago] ('f2ee50eb34ae40b5b9f3ec337ef18eb1',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 2325s ago] ('f2ee50eb34ae40b5b9f3ec337ef18eb1',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 2451s ago] ('f2ee50eb34ae40b5b9f3ec337ef18eb1',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO categories (title, created_at) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('Отдел Кадров', '2024-08-19 07:53:33.969191')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT categories.id, categories.title, categories.created_at 
+FROM categories 
+WHERE categories.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] (2,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO type_selections (title, created_at) VALUES (?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ('some', '2024-08-19 07:53:54.095345')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, type_selections.created_at 
+FROM type_selections 
+WHERE type_selections.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00026s] (2,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[cached since 2683s ago] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 2683s ago] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+ERROR:backend.src.account.user.api:SQLAlchemyError: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(users)]'. Original exception was: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(users)]'. Original exception was: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(users)]'. Original exception was: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(users)]'. Original exception was: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+ERROR:backend.src.account.user.api:SQLAlchemyError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(users)]'. Original exception was: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(users)]'. Original exception was: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:asyncio:Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+ERROR:backend.src.account.user.api:SQLAlchemyError: When initializing mapper Mapper[User(users)], expression 'InfoEmployees' failed to locate a name ('InfoEmployees'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:Unexpected error: name 'IntegrityError' is not defined
+ERROR:backend.src.account.user.api:Unexpected error: name 'IntegrityError' is not defined
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00050s] ('d19344732b5a4240a39696894f6b820d', 'string', 'string', 'string', '2024-08-19', 'user@example.com', '$2b$12$/nnL4UH22Z7OfmK3vGqwDuTAGRfGzBC1X2j3LJg9IIiwXHd4Pu6F.', 0, None, 'string', 1, 0, '["ROLE_PORTAL_USER"]', '2024-08-19 09:01:24.271784', '2024-08-19 09:01:24.271784')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('7e876779814443e2b5a46db29064ec01', 'd19344732b5a4240a39696894f6b820d', 'string', 'Создание пользователя', '2024-08-19 09:01:24.274776', 'Пользователь:  user@example.com создан')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00047s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00026s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 123.7s ago] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00051s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00041s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT categories.id, categories.title, categories.created_at 
+FROM categories
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT type_selections.id, type_selections.title, type_selections.created_at 
+FROM type_selections
+INFO:sqlalchemy.engine.Engine:[generated in 0.00025s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00042s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 58.36s ago] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00028s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00047s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO questions (question_id, title, created_at, category_id, type_select_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ('cc71fee5a1e842ec8d6044eda08e2e3c', 'ice baby my baby', '2024-08-19 10:16:13.477349', 2, 2)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ('cc71fee5a1e842ec8d6044eda08e2e3c',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?), (?, ?, ?, ?, ?), (?, ?, ?, ?, ?), (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00019s (insertmanyvalues) 1/1 (unordered)] ('2711e621e1314b07a3047b33deb60e7f', 'tash', 1, '2024-08-19 10:16:13.639373', 'cc71fee5a1e842ec8d6044eda08e2e3c', '9e679bf1e06c4bfd9180e1e8f3a356c6', 'bash', 0, '2024-08-19 10:16:13.639373', 'cc71fee5a1e842ec8d6044eda08e2e3c', 'fe8f2e95c5c54984b7be51329e2e56c7', 'ash', 0, '2024-08-19 10:16:13.639373', 'cc71fee5a1e842ec8d6044eda08e2e3c', '3527ae16355640d5bcd870828c43989c', 'hash', 0, '2024-08-19 10:16:13.639373', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 24.28s ago] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00041s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00027s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00041s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00062s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 15.64s ago] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:UPDATE questions SET title=?, category_id=?, type_select_id=? WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ('dasdsa', 2, 2, '45c48de2e73f4209be361fe2d942eb95')
+INFO:sqlalchemy.engine.Engine:DELETE FROM answers WHERE answers.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00040s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:INSERT INTO answers (id, text, is_correct, created_at, question_id) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ('856ec0e28b6f4935ad8009529a4917cd', 'dasdsa', 1, '2024-08-19 10:42:44.992241', '45c48de2e73f4209be361fe2d942eb95')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00040s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at, answers.question_id AS answers_question_id 
+FROM answers 
+WHERE ? = answers.question_id
+INFO:sqlalchemy.engine.Engine:[generated in 0.00041s] ('45c48de2e73f4209be361fe2d942eb95',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00031s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 17.02s ago] ('45c48de2e73f4209be361fe2d942eb95', 'ee7ce1764b4541978554e808ab31e69b', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00037s] ('ee7ce1764b4541978554e808ab31e69b',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('ee7ce1764b4541978554e808ab31e69b',)
+INFO:sqlalchemy.engine.Engine:DELETE FROM answers WHERE answers.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00025s] ('ee7ce1764b4541978554e808ab31e69b',)
+INFO:sqlalchemy.engine.Engine:DELETE FROM questions WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00023s] ('ee7ce1764b4541978554e808ab31e69b',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00048s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00045s] ('45c48de2e73f4209be361fe2d942eb95', '5bec2f5daa1c4798b76066d58f59789b', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ('5bec2f5daa1c4798b76066d58f59789b',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 15.28s ago] ('5bec2f5daa1c4798b76066d58f59789b',)
+INFO:sqlalchemy.engine.Engine:DELETE FROM answers WHERE answers.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ('5bec2f5daa1c4798b76066d58f59789b',)
+INFO:sqlalchemy.engine.Engine:DELETE FROM questions WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('5bec2f5daa1c4798b76066d58f59789b',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('45c48de2e73f4209be361fe2d942eb95', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'b9077c78150e4760b285fed0b46db84c', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions 
+WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00109s] ('b9077c78150e4760b285fed0b46db84c',)
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?)
+INFO:sqlalchemy.engine.Engine:[cached since 23.96s ago] ('b9077c78150e4760b285fed0b46db84c',)
+INFO:sqlalchemy.engine.Engine:DELETE FROM answers WHERE answers.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('b9077c78150e4760b285fed0b46db84c',)
+INFO:sqlalchemy.engine.Engine:DELETE FROM questions WHERE questions.question_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00044s] ('b9077c78150e4760b285fed0b46db84c',)
+INFO:sqlalchemy.engine.Engine:COMMIT

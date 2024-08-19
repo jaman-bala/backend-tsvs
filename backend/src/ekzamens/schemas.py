@@ -1,3 +1,4 @@
+from uuid import UUID
 from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
@@ -77,48 +78,39 @@ class TypeSelectionOUTPUT(BaseModel):
 
 
 class AnswerSchema(BaseModel):
-    id: int
-    text: str = None
-    is_correct: bool = None
-    created_at: datetime = None
+    id: UUID
+    text: str
+    is_correct: bool
+    created_at: datetime
 
     class Config:
         orm_mode = True
 
 
-class AnswerCreate(AnswerSchema):
-    text: str = None
-    is_correct: bool = None
-
-    class Config:
-        orm_mode = True
+class AnswerCreate(BaseModel):
+    text: str
+    is_correct: bool
 
 
-class AnswerUpdate(AnswerCreate):
-    pass
+class AnswerUpdate(BaseModel):
+    text: str
+    is_correct: bool
 
 
 class AnswerDelete(AnswerSchema):
-    id: int
-
-    class Config:
-        orm_mode = True
+    id: UUID
 
 
 class AnswerOUTPUT(BaseModel):
-    id: int
-    text: str = None
-    is_correct: bool = None
-
-    class Config:
-        orm_mode = True
+    id: UUID
+    text: str
+    is_correct: bool
 
 
 class QuestionSchema(BaseModel):
-    id: int
-    title: str = None
-    created_at: datetime = None
-    answers: List[AnswerOUTPUT] = None
+    title: str
+    created_at: datetime
+    answers: List[AnswerOUTPUT]
 
     class Config:
         orm_mode = True
@@ -126,31 +118,29 @@ class QuestionSchema(BaseModel):
 
 class QuestionCreate(BaseModel):
     title: str
-    category_id: int = None
-    type_selection_id: int = None
-    answers: List[AnswerCreate] = None
-
-    class Config:
-        orm_mode = True
+    category_id: int
+    type_select_id: int
+    answers: List[AnswerCreate]
 
 
-class QuestionUpdate(QuestionSchema):
-    pass
+class QuestionUpdate(BaseModel):
+    title: str
+    category_id: int
+    type_select_id: int
+    answers: List[AnswerUpdate]
 
 
-class QuestionDelete(QuestionSchema):
-    id: int
-
-    class Config:
-        orm_mode = True
+class QuestionDelete(BaseModel):
+    question_id: UUID
+    title: str
 
 
 class QuestionOUTPUT(BaseModel):
-    id: int
-    title: str = None
-    category_id: int = None
-    type_selection_id: int = None
-    answers: List[AnswerOUTPUT] = None
+    question_id: UUID
+    title: str
+    category_id: int
+    type_select_id: int
+    answers: List[AnswerOUTPUT]
 
     class Config:
         orm_mode = True

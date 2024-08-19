@@ -1,5 +1,10 @@
+import uuid
+from uuid import UUID
+
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from sqlalchemy import delete
+
 from fastapi import HTTPException
 from sqlalchemy.orm import selectinload
 
@@ -162,20 +167,25 @@ async def _create_question(
         body: QuestionCreate,
         session: AsyncSession
 ):
-    db_question = Question(title=body.title)
-    session.add(db_question)
-    await session.commit()
-    await session.refresh(db_question)
+    db_question = Question(
+        title=body.title,
+        category_id=body.category_id,
+        type_select_id=body.type_select_id
+    )
+
+    session.add(db_question)  # Добавляем вопрос в сессию
+    await session.commit()  # Сохраняем вопрос в базе данных
+    await session.refresh(db_question)  # Обновляем объект, чтобы получить его идентификатор
 
     if body.answers:
         for answer_data in body.answers:
             db_answer = Answer(
                 text=answer_data.text,
                 is_correct=answer_data.is_correct,
-                question_id=db_question.id
+                question_id=db_question.question_id
             )
             session.add(db_answer)
-        await session.commit()
+        await session.commit()  # Сохраняем ответы в базе данных
 
     return db_question
 
@@ -187,68 +197,61 @@ async def _get_question(session: AsyncSession):
 
 
 async def _get_question_by_id(
-        question_id: int,
+        question_id: UUID,
         session: AsyncSession,
 ):
-    query = select(Question).where(Question.id == question_id).options(selectinload(Question.answers))
+    query = select(Question).where(Question.question_id == question_id).options(selectinload(Question.answers))
     result = await session.execute(query)
     question = result.scalar_one_or_none()
     return question
 
 
 async def _update_question(
-        question_id: int,
+        question_id: UUID,
         body: QuestionUpdate,
         session: AsyncSession,
 ):
+    # Получаем вопрос по ID
     db_question = await _get_question_by_id(question_id, session)
-    if db_question is None:
-        raise HTTPException(status_code=404, detail="Question not found")
+    if not db_question:
+        return None
 
-    # Обновляем основные поля вопроса
+    # Обновляем поля вопроса
     db_question.title = body.title
     db_question.category_id = body.category_id
-    db_question.type_select_id = body.type_selection_id
+    db_question.type_select_id = body.type_select_id
 
     # Обновляем ответы
     if body.answers:
-        existing_answer_ids = [answer.id for answer in db_question.answers]
-        incoming_answer_ids = [answer.id for answer in body.answers if answer.id]
-
-        # Удаляем ответы, которые отсутствуют в входных данных
-        for answer in db_question.answers:
-            if answer.id not in incoming_answer_ids:
-                await session.delete(answer)
-
-        # Обновляем существующие ответы и добавляем новые
+        # Удаляем старые ответы
+        await session.execute(delete(Answer).where(Answer.question_id == question_id))
+        # Добавляем новые ответы
         for answer_data in body.answers:
-            if answer_data.id in existing_answer_ids:
-                db_answer = next(answer for answer in db_question.answers if answer.id == answer_data.id)
-                db_answer.text = answer_data.text
-                db_answer.is_correct = answer_data.is_correct
-            else:
-                new_answer = Answer(
-                    text=answer_data.text,
-                    is_correct=answer_data.is_correct,
-                    question_id=db_question.id
-                )
-                session.add(new_answer)
+            db_answer = Answer(
+                text=answer_data.text,
+                is_correct=answer_data.is_correct,
+                question_id=question_id
+            )
+            session.add(db_answer)
 
     await session.commit()
     await session.refresh(db_question)
-
     return db_question
 
 
 async def _delete_question(
-        question_id: int,
+        question_id: UUID,
         session: AsyncSession,
 ):
     db_question = await _get_question_by_id(question_id, session)
-    if db_question is None:
-        raise HTTPException(status_code=404, detail="Question not found")
+    if not db_question:
+        return None
 
-    await session.delete(db_question)
+    # Удаляем все ответы, связанные с вопросом
+    await session.execute(delete(Answer).where(Answer.question_id == question_id))
+
+    # Удаляем вопрос
+    await session.execute(delete(Question).where(Question.question_id == question_id))
+
     await session.commit()
-
     return db_question

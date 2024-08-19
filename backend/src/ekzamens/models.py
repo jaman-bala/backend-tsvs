@@ -1,6 +1,6 @@
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Text
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
 
@@ -39,16 +39,17 @@ class Question(BaseExam):
 
     __tablename__ = 'questions'
 
-    id = Column(UUID, primary_key=True, index=True, default=uuid.uuid4)
+    question_id = Column(UUID, primary_key=True, index=True, default=uuid.uuid4)
     title = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-    answers = relationship("Answer", back_populates="question")
-    category_id = Column(Integer, ForeignKey('categories.id'))
+    category_id = Column(Integer, ForeignKey('categories.id'), nullable=True)
     category = relationship("Category", back_populates="questions")
 
-    type_select_id = Column(Integer, ForeignKey('type_selections.id'))
+    type_select_id = Column(Integer, ForeignKey('type_selections.id'), nullable=True)
     type_select = relationship("TypeSelection", back_populates="questions")
+
+    answers = relationship("Answer", back_populates="question")
 
     def __str__(self):
         return self.title
@@ -58,12 +59,12 @@ class Answer(BaseExam):
 
     __tablename__ = 'answers'
 
-    id = Column(Integer, primary_key=True, index=True)
-    text = Column(String, nullable=False)
-    is_correct = Column(Boolean, default=False, server_default='false')
+    id = Column(UUID, primary_key=True, index=True, default=uuid.uuid4)
+    text = Column(Text, nullable=False)
+    is_correct = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-    question_id = Column(Integer, ForeignKey('questions.id'))
+    question_id = Column(UUID, ForeignKey('questions.question_id'), nullable=True)
     question = relationship("Question", back_populates="answers")
 
     def __str__(self):
