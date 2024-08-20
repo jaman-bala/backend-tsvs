@@ -11074,3 +11074,12 @@ INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('b9077c78150e4760b285fed0
 INFO:sqlalchemy.engine.Engine:DELETE FROM questions WHERE questions.question_id = ?
 INFO:sqlalchemy.engine.Engine:[generated in 0.00044s] ('b9077c78150e4760b285fed0b46db84c',)
 INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT questions.question_id, questions.title, questions.created_at, questions.category_id, questions.type_select_id 
+FROM questions
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ()
+INFO:sqlalchemy.engine.Engine:SELECT answers.question_id AS answers_question_id, answers.id AS answers_id, answers.text AS answers_text, answers.is_correct AS answers_is_correct, answers.created_at AS answers_created_at 
+FROM answers 
+WHERE answers.question_id IN (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00045s] ('45c48de2e73f4209be361fe2d942eb95', '0493d30fa05b44bb8088ba47cfbec979', 'bfaed423bbe74886a27964962c397e33', 'f2ee50eb34ae40b5b9f3ec337ef18eb1', 'cc71fee5a1e842ec8d6044eda08e2e3c')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
