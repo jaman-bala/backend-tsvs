@@ -32,7 +32,7 @@ class ShowUser(TunedModel):
     job_title: Optional[str] = None
 
     is_active: bool
-    is_superuser: bool
+    is_superuser: Optional[bool] = False
     roles: List[PortalRole]
     created_at: datetime
     updated_at: datetime

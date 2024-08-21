@@ -70,6 +70,15 @@ class UserDAL:
             details=f"Пользователь:  {new_user.email} создан")
         return new_user
 
+    async def get_all_users(self) -> List[User]:
+        try:
+            query = select(User)
+            result = await self.db_session.execute(query)
+            users = result.scalars().all()
+            return users
+        except SQLAlchemyError as e:
+            raise HTTPException(status_code=500, detail=f"Database error occurred: {str(e)}")
+
     async def delete_user(self, user_id: UUID) -> Union[UUID, None]:
         try:
             query = (

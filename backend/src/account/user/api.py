@@ -18,7 +18,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.src.account.auth.hashing import Hasher
 from backend.src.account.auth.jwt import get_current_user_from_token
-from backend.src.account.user.crud import _create_new_user
 from backend.src.account.user.crud import _delete_user
 from backend.src.account.user.crud import _disabled
 from backend.src.account.user.crud import _get_user_by_id
@@ -28,10 +27,8 @@ from backend.src.account.user.crud import check_user_permissions
 from backend.src.account.user.enums import PortalRole
 from backend.src.account.user.schemas import DeleteUserResponse, ResetPasswordRequest, ActionHistorySchema
 from backend.src.account.user.schemas import ShowUser
-from backend.src.account.user.schemas import UpdateUserRequest
 from backend.src.account.user.schemas import UpdatedUserResponse
 from backend.src.account.user.schemas import RoleUpdate
-from backend.src.account.user.schemas import UserCreate
 from backend.src.account.user.dals import User, UserDAL
 from backend.db.session import get_db
 
@@ -325,3 +322,5 @@ async def get_user_history(
     user_dal = UserDAL(db)
     history = await user_dal.get_user_history(user_id)
     return history
+
+

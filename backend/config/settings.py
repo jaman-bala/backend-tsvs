@@ -8,6 +8,7 @@ load_dotenv(dotenv_path=env_path)
 
 BASE_DIR = Path(__file__).parent.parent
 UPLOAD_DIR = "media/file"
+STATIC_FILES_DIR = BASE_DIR / "static"
 
 
 class Settings:

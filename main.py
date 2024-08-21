@@ -9,7 +9,7 @@ from starlette_exporter import handle_metrics
 from starlette_exporter import PrometheusMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.config.settings import set, BASE_DIR
+from backend.config.settings import set, BASE_DIR, STATIC_FILES_DIR
 from backend.src.account.user.api import user_router
 from backend.src.account.user.admin_privilege import admin_router
 from backend.src.account.user.login_handler import login_router
@@ -17,6 +17,7 @@ from backend.src.account.user.login_handler import login_router
 from backend.src.regions.router import router as region_router
 from backend.src.departments.router import router as departments_router
 from backend.src.ekzamens.router import router as ezamens_router
+
 
 #########################
 # BLOCK WITH API ROUTES #
@@ -26,11 +27,19 @@ app = FastAPI(
     title=set.PROJECT_NAME,
     version=set.PROJECT_VERSION
 )
+static_dir = STATIC_FILES_DIR
+if not static_dir.exists():
+    static_dir.mkdir(parents=True)
 app.mount(
     "/static",
-         StaticFiles(directory="static"),
-         name="static",
-    )
+    StaticFiles(directory=BASE_DIR / "static"),
+    name="static",
+)
+app.mount(
+    "/static",
+    StaticFiles(directory=static_dir),
+    name="static",
+)
 
 
 origins = [

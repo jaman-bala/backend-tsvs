@@ -1,4 +1,5 @@
 import logging
+
 from typing import Union, List
 from jose import jwt
 from jose import JWTError
@@ -71,3 +72,5 @@ async def get_current_user_from_token(
         raise credentials_exception
     user.roles = roles
     return user
+
+
