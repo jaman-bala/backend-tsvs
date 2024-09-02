@@ -3,9 +3,12 @@ FROM python:3.9-alpine
 
 # Install system dependencies
 RUN apk add --no-cache \
-    libgl1-mesa-glx \
+    mesa-gl \
+    libffi-dev \
     # Add other dependencies if needed
-    && pip install --no-cache-dir \
+
+# Install Python dependencies
+RUN pip install --no-cache-dir \
     deepface \
     opencv-python-headless \
     # Add other Python dependencies if needed
