@@ -1,16 +1,26 @@
-FROM python:3.9-slim
+# Use an appropriate base image for your application
+FROM python:3.9-alpine
 
+# Install system dependencies
+RUN apk add --no-cache \
+    libgl1-mesa-glx \
+    # Add other dependencies if needed
+    && pip install --no-cache-dir \
+    deepface \
+    opencv-python-headless \
+    # Add other Python dependencies if needed
+
+# Copy your application code
+COPY . /app
+
+# Set the working directory
 WORKDIR /app
 
-COPY requirements.txt .
-
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Expose the port your application will run on
+EXPOSE 8000
 
-COPY alembic.ini .
-COPY alembic /app/alembic
-
-ENV PYTHONUNBUFFERED=1
-
+# Start your application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
