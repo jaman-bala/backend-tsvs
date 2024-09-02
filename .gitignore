@@ -9,7 +9,7 @@ htmlcov
 dist
 site
 git
-app.db
+alembic/versions/drop/app.db
 
 .coverage
 coverage.xml

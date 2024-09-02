@@ -11332,3 +11332,314 @@ INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, u
 FROM users
 INFO:sqlalchemy.engine.Engine:[cached since 5389s ago] ()
 INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00041s] ('mamalak@gmail.com',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 19.15s ago] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00050s] ('f3fdd22ca206491987ba6b68d0debd88', 'string', 'string', 'string', '2024-08-27', 'user@example.com', '$2b$12$ZQ1ndLifep/NhgsrTmIVieL0QT/QLIFLX2EPbN7Dd1D1k0r/NJfb6', 0, None, 'string', 1, 0, '["ROLE_PORTAL_ADMIN"]', '2024-08-27 11:12:55.382498', '2024-08-27 11:12:55.382498')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+ERROR:backend.src.account.user.api:SQLAlchemyError: (sqlite3.OperationalError) no such table: users
+[SQL: INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('f3fdd22ca206491987ba6b68d0debd88', 'string', 'string', 'string', '2024-08-27', 'user@example.com', '$2b$12$ZQ1ndLifep/NhgsrTmIVieL0QT/QLIFLX2EPbN7Dd1D1k0r/NJfb6', 0, None, 'string', 1, 0, '["ROLE_PORTAL_ADMIN"]', '2024-08-27 11:12:55.382498', '2024-08-27 11:12:55.382498')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[cached since 15.86s ago] ('d5b645b75e4b4cbc8b7b4cb1b252a3cb', 'string', 'string', 'string', '2024-08-27', 'best@example.com', '$2b$12$0hTohPLg0791Iuxei9EtEOMXKXcU5DR94b7d/r9dBgqvTiDijhvuW', 0, None, 'string', 1, 0, '["ROLE_PORTAL_ADMIN"]', '2024-08-27 11:13:11.242558', '2024-08-27 11:13:11.242558')
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+ERROR:backend.src.account.user.api:SQLAlchemyError: (sqlite3.OperationalError) no such table: users
+[SQL: INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('d5b645b75e4b4cbc8b7b4cb1b252a3cb', 'string', 'string', 'string', '2024-08-27', 'best@example.com', '$2b$12$0hTohPLg0791Iuxei9EtEOMXKXcU5DR94b7d/r9dBgqvTiDijhvuW', 0, None, 'string', 1, 0, '["ROLE_PORTAL_ADMIN"]', '2024-08-27 11:13:11.242558', '2024-08-27 11:13:11.242558')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00066s] ('d756e0ea0b9640b39f58c75a034520cc', 'string', 'string', 'string', '2024-08-27', 'user@example.com', '$2b$12$RJcheB2Dofs.itcXaqRMZuhrKBfEfIZcC1ZVu8K9OhHxkWncAa0Gq', 0, None, 'string', 1, 0, '["ROLE_PORTAL_USER"]', '2024-08-27 11:16:10.063503', '2024-08-27 11:16:10.063503')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('8ec9c8ea9876480a8f196541c02ec38e', 'd756e0ea0b9640b39f58c75a034520cc', 'string', 'Ñîçäàíèå ïîëüçîâàòåëÿ', '2024-08-27 11:16:10.068491', 'Ïîëüçîâàòåëü:  user@example.com ñîçäàí')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.src.account.auth.jwt:username/email extracted is user@example.com, roles are ['ROLE_PORTAL_USER']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 4.621s ago] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[generated in 0.00032s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT tickets.id, tickets.number, tickets.is_active, tickets.hall_id, tickets.operator_id 
+FROM tickets 
+WHERE tickets.operator_id = ? AND tickets.is_active = 1 ORDER BY tickets.number
+INFO:sqlalchemy.engine.Engine:[generated in 0.00286s] (2,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT tickets.id, tickets.number, tickets.is_active, tickets.hall_id, tickets.operator_id 
+FROM tickets ORDER BY tickets.id DESC
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] (1, 0)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT tickets.id AS tickets_id, tickets.number AS tickets_number, tickets.is_active AS tickets_is_active, tickets.hall_id AS tickets_hall_id, tickets.operator_id AS tickets_operator_id 
+FROM tickets 
+WHERE tickets.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT tickets.id, tickets.number, tickets.is_active, tickets.hall_id, tickets.operator_id 
+FROM tickets ORDER BY tickets.id DESC
+ LIMIT ? OFFSET ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] (1, 0)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO halls (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('TS',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO halls (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] ('string',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00053s] ('5ff480a9ff2d4ff0ae402118bfc55a3f', 'string', 'string', 'string', '2024-08-29', 'user@example.com', '$2b$12$NTRdAS6SWUFWajZvCACPlO6gi/NMFwXJEpzvupBaA4eWopfXP4Cjq', 0, None, 'string', 1, 0, '["ROLE_PORTAL_ADMIN"]', '2024-08-29 11:12:50.970577', '2024-08-29 11:12:50.970577')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00047s] ('aa3c5d722dc54e068328520f7fd0096c', '5ff480a9ff2d4ff0ae402118bfc55a3f', 'string', 'Ñîçäàíèå ïîëüçîâàòåëÿ', '2024-08-29 11:12:50.974595', 'Ïîëüçîâàòåëü:  user@example.com ñîçäàí')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO halls (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00027s] ('string',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO halls (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ('string',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO halls (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00027s] ('string',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+ERROR:backend.src.account.user.api:SQLAlchemyError: When initializing mapper Mapper[User(users)], expression 'Ticket' failed to locate a name ('Ticket'). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00042s] ('586a2af23ca3414cb392177907d304b1', 'string', 'string', 'string', '2024-08-30', 'user@example.com', '$2b$12$PK/ofxj8l2pORG52Bx0WlevMkn0ny0Y1n6XTXMdrN/CI/zXR2K2uu', 0, 'static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg', 'string', 1, 0, '["ROLE_PORTAL_USER"]', '2024-08-30 04:23:37.133075', '2024-08-30 04:23:37.133075')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('3a4aa78d5ec247b0b9fc03f659e427b6', '586a2af23ca3414cb392177907d304b1', 'string', 'Ñîçäàíèå ïîëüçîâàòåëÿ', '2024-08-30 04:23:37.136067', 'Ïîëüçîâàòåëü:  user@example.com ñîçäàí')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.src.account.auth.jwt:username/email extracted is user@example.com, roles are ['ROLE_PORTAL_USER']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 5.909s ago] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[generated in 0.00035s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00049s] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.src.account.auth.jwt:username/email extracted is user@example.com, roles are ['ROLE_PORTAL_USER']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 5.898s ago] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[generated in 0.00033s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.src.account.auth.jwt:username/email extracted is user@example.com, roles are ['ROLE_PORTAL_USER']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 5.049s ago] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[generated in 0.00036s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:backend.src.account.face.face_recognition:Comparing with user image: static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg
+ERROR:backend.src.account.face.face_recognition:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.face_recognition:Error in authenticate_face: [WinError 32] Ïðîöåññ íå ìîæåò ïîëó÷èòü äîñòóï ê ôàéëó, òàê êàê ýòîò ôàéë çàíÿò äðóãèì ïðîöåññîì: 'C:\\Users\\mrrobot\\AppData\\Local\\Temp\\tmppt6j1spw.jpg'
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.face_recognition:Error in face comparison: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.face_recognition:Error in face comparison: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:backend.src.account.face.face_recognition:Checking face similarity for image: static/face-save/tmp93789i4a.jpg
+INFO:backend.src.account.face.face_recognition:Comparing with user image: static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg
+ERROR:backend.src.account.face.face_recognition:Error comparing with image static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg: Exception while processing img1_path
+INFO:backend.src.account.face.face_recognition:No matching faces found.
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:backend.src.account.face.face_recognition:Temporary image path: C:\Users\mrrobot\AppData\Local\Temp\tmpclj62rz4.jpg
+INFO:backend.src.account.face.face_recognition:Saved image path: static/face-save/tmpclj62rz4.jpg
+INFO:backend.src.account.face.face_recognition:Checking face similarity for image: static/face-save/tmpclj62rz4.jpg
+INFO:backend.src.account.face.face_recognition:Comparing with user image: static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg
+ERROR:backend.src.account.face.face_recognition:Error comparing with image static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg: Exception while processing img1_path
+INFO:backend.src.account.face.face_recognition:No matching faces found.
+ERROR:backend.src.account.face.face_recognition:Error occurred: 
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:backend.src.account.face.face_recognition:Temporary image path: C:\Users\mrrobot\AppData\Local\Temp\tmpyoopmyxd.jpg
+INFO:backend.src.account.face.face_recognition:Saved image path: static/face-save/tmpyoopmyxd.jpg
+INFO:backend.src.account.face.face_recognition:Checking face similarity for image: static/face-save/tmpyoopmyxd.jpg
+INFO:backend.src.account.face.face_recognition:Comparing with user image: static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg
+ERROR:backend.src.account.face.face_recognition:Error comparing with image static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg: Exception while processing img1_path
+INFO:backend.src.account.face.face_recognition:No matching faces found.
+ERROR:backend.src.account.face.face_recognition:Error occurred: 
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:backend.src.account.face.face_recognition:Temporary image path: C:\Users\mrrobot\AppData\Local\Temp\tmphzjo1em4.jpg
+INFO:backend.src.account.face.face_recognition:Saved image path: static/face-save/tmphzjo1em4.jpg
+INFO:backend.src.account.face.face_recognition:Checking face similarity for image: static/face-save/tmphzjo1em4.jpg
+INFO:backend.src.account.face.face_recognition:Comparing with user image: static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg
+ERROR:backend.src.account.face.face_recognition:Error comparing with image static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg: Exception while processing img1_path
+INFO:backend.src.account.face.face_recognition:No matching faces found.
+ERROR:backend.src.account.face.face_recognition:Error occurred: 
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Passed path static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg does not exist!
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: analyze() got an unexpected keyword argument 'model_name'
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Invalid model_name passed - facial_recognition/mtcnn
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('a7e0665472aa48b2befd40e12461815d', 'string', 'string', 'string', '2024-08-30', 'mamalak@gmail.com', '$2b$12$ZM2zwudZ8xXj9p9pQjnOQukieo7ornIS8ELP44oW7FrcDQllz1qcm', 0, 'static/avatars/1605822.08eabab94691847d7b48baf7cbb7e6af.500.jpg', 'string', 1, 0, '["ROLE_PORTAL_ADMIN"]', '2024-08-30 09:12:51.346709', '2024-08-30 09:12:51.346709')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00039s] ('9f7934a41f3c4111b75a5f6eb3054145', 'a7e0665472aa48b2befd40e12461815d', 'string', 'Ñîçäàíèå ïîëüçîâàòåëÿ', '2024-08-30 09:12:51.351697', 'Ïîëüçîâàòåëü:  mamalak@gmail.com ñîçäàí')
+INFO:sqlalchemy.engine.Engine:COMMIT
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('mamalak@gmail.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+WARNING:tensorflow:From E:\\u2190PROJECTS®\backend-tsvs\favenv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('mamalak@gmail.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.src.account.auth.jwt:username/email extracted is mamalak@gmail.com, roles are ['ROLE_PORTAL_ADMIN']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 22.37s ago] ('mamalak@gmail.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path

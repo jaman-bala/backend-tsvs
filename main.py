@@ -1,7 +1,6 @@
 import uvicorn
-import os
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.routing import APIRouter
 from fastapi.staticfiles import StaticFiles
@@ -13,6 +12,7 @@ from backend.config.settings import set, BASE_DIR, STATIC_FILES_DIR
 from backend.src.account.user.api import user_router
 from backend.src.account.user.admin_privilege import admin_router
 from backend.src.account.user.login_handler import login_router
+from backend.src.account.face.router import router as face_router
 
 from backend.src.regions.router import router as region_router
 from backend.src.departments.router import router as departments_router
@@ -27,6 +27,7 @@ app = FastAPI(
     title=set.PROJECT_NAME,
     version=set.PROJECT_VERSION
 )
+
 static_dir = STATIC_FILES_DIR
 if not static_dir.exists():
     static_dir.mkdir(parents=True)
@@ -40,7 +41,6 @@ app.mount(
     StaticFiles(directory=static_dir),
     name="static",
 )
-
 
 origins = [
     "http://localhost:3000",  # React app
@@ -57,10 +57,7 @@ app.add_middleware(
 app.add_middleware(PrometheusMiddleware)
 app.add_route("/metrics", handle_metrics)
 
-# create the instance for the routes
 main_api_router = APIRouter()
-
-# set routes to the app instance
 
 
 @main_api_router.get("/")
@@ -102,6 +99,12 @@ main_api_router.include_router(
     login_router,
     prefix="/api",
     tags=["LOGIN"]
+)
+
+main_api_router.include_router(
+    face_router,
+    prefix="/api",
+    tags=["FACE LOGIN"]
 )
 
 
