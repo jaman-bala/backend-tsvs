@@ -11643,3 +11643,25 @@ INFO:sqlalchemy.engine.Engine:[generated in 0.00038s] ()
 INFO:sqlalchemy.engine.Engine:ROLLBACK
 ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
 ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00043s] ('be4b99a7a50c4a1889538b71db497ed9', 'string', 'string', 'string', '2024-09-03', 'user@example.com', '$2b$12$OFQp8OYSYHTBHjbX6sq1PuAISINdV33GKZpCe3Kcetv.63gmnRORS', 0, None, 'string', 1, 0, '["ROLE_PORTAL_ADMIN"]', '2024-09-03 09:26:17.652955', '2024-09-03 09:26:17.652955')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00048s] ('b974e4f53a3449a4862eef87f47e5422', 'be4b99a7a50c4a1889538b71db497ed9', 'string', 'Создание пользователя', '2024-09-03 09:26:17.655975', 'Пользователь:  user@example.com создан')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00044s] ('user@example.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00061s] ('75108ef2cc484311b8bcbe840e2d320b', 'string', 'string', 'string', '2024-09-03', 'mamalak@example.com', '$2b$12$bMD.gCW5A1ovcOc8dCIil.KzgbIROc5O2KfaE8T0CMVsHVJS2NY6y', 0, 'static/avatars/1069616.03bab0bcc50030aee65efc0a170243e6.500.jpg', 'string', 1, 0, '["ROLE_PORTAL_ADMIN"]', '2024-09-03 09:34:24.947876', '2024-09-03 09:34:24.947876')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00059s] ('e6e7e2947fa948a0ae874a7416c3ccc3', '75108ef2cc484311b8bcbe840e2d320b', 'string', 'Создание пользователя', '2024-09-03 09:34:24.952861', 'Пользователь:  mamalak@example.com создан')
+INFO:sqlalchemy.engine.Engine:COMMIT
