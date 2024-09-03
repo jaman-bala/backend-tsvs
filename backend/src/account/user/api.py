@@ -1,7 +1,7 @@
 import logging
 import aiofiles
 
-from fastapi_cache.decorator import cache
+# from fastapi_cache.decorator import cache
 from datetime import date
 from logging import getLogger
 from typing import List, Optional
@@ -98,7 +98,7 @@ async def create_user(
 
 
 @user_router.get("/all/", response_model=List[ShowUser])
-@cache(expire=60)
+# @cache(expire=60)
 async def get_all(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user_from_token),
