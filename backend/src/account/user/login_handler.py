@@ -11,7 +11,7 @@ from backend.src.account.auth.jwt import authenticate_user
 from backend.src.account.auth.schemas import Token
 from backend.src.account.user.models import User
 from backend.db.session import get_db
-from backend.src.account.auth.security import create_access_token
+from backend.src.account.auth.security import create_access_token, create_refresh_token
 from backend.src.account.auth.jwt import get_current_user_from_token
 
 login_router = APIRouter()
@@ -38,8 +38,15 @@ async def login_for_access_token(
             detail="Incorrect username or password",
         )
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    refresh_token_expires = timedelta(minutes=settings.REFRESH_TOKEN_EXPIRE_MINUTES)
+
     access_token = create_access_token(
         data={"sub": user.email, "roles": user.roles},
         expires_delta=access_token_expires,
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    refresh_token = create_refresh_token(
+        data={"sub": user.email},
+        expires_delta=refresh_token_expires,
+    )
+
+    return {"access_token": access_token, "refresh_token": refresh_token, "token_type": "bearer"}
