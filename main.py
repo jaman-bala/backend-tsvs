@@ -1,5 +1,11 @@
 import uvicorn
 
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.redis import RedisBackend
+from redis import asyncio as aioredis
+
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.routing import APIRouter
@@ -110,6 +116,12 @@ main_api_router.include_router(
 
 app.include_router(main_api_router)
 
+
+@asynccontextmanager
+async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+    redis = aioredis.from_url("redis://localhost")
+    FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
+    yield
 
 if __name__ == "__main__":
     # run app on the host and port

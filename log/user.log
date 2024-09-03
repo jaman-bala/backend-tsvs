@@ -11665,3 +11665,17 @@ INFO:sqlalchemy.engine.Engine:[generated in 0.00061s] ('75108ef2cc484311b8bcbe84
 INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
 INFO:sqlalchemy.engine.Engine:[generated in 0.00059s] ('e6e7e2947fa948a0ae874a7416c3ccc3', '75108ef2cc484311b8bcbe840e2d320b', 'string', 'Создание пользователя', '2024-09-03 09:34:24.952861', 'Пользователь:  mamalak@example.com создан')
 INFO:sqlalchemy.engine.Engine:COMMIT
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00049s] ('0657a1d2700b41e7a422a6c7713b701b', 'string', 'string', 'string', '2024-09-03', 'user@example.com', '$2b$12$9hI8hV9mR4zgzOOC1BexguPveZiiJaKwosa6IES.zQoF2P2Tw4E6q', 0, 'static/avatars/1605822.08eabab94691847d7b48baf7cbb7e6af.500.jpg', 'string', 1, 0, '["ROLE_PORTAL_USER"]', '2024-09-03 10:38:59.843810', '2024-09-03 10:38:59.843810')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00046s] ('49c6b9ac08bd4f6dae71dd3d7ba87da7', '0657a1d2700b41e7a422a6c7713b701b', 'string', 'Создание пользователя', '2024-09-03 10:38:59.855779', 'Пользователь:  user@example.com создан')
+INFO:sqlalchemy.engine.Engine:COMMIT
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+ERROR:backend.src.account.face.utils:Error comparing faces: Exception while processing img1_path
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+

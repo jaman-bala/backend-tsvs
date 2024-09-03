@@ -1,5 +1,6 @@
 import os
 import uuid
+from fastapi_cache.decorator import cache
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from datetime import timedelta
 
@@ -10,6 +11,7 @@ router = APIRouter()
 
 
 @router.post("/auth/face")
+@cache(expire=60)
 async def authenticate_face(image: UploadFile = File(...)):
     temp_dir = 'static/face-save/'
     os.makedirs(temp_dir, exist_ok=True)
