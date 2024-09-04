@@ -60,7 +60,7 @@ class UserActionHistory(BaseUser):
     __tablename__ = "user_action_history"
 
     id = Column(UUID, primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.user_id"), ondelete='CASCADE', nullable=False)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.user_id", ondelete='CASCADE'), nullable=False)
     name = Column(String, nullable=False)
     action = Column(String, nullable=False)
     timestamp = Column(DateTime, default=datetime.utcnow)
