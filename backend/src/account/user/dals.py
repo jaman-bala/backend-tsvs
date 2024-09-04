@@ -81,6 +81,8 @@ class UserDAL:
 
     async def delete_user(self, user_id: UUID) -> Union[UUID, None]:
         try:
+            delete_history_query = delete(UserActionHistory).where(UserActionHistory.user_id == user_id)
+            await self.db_session.execute(delete_history_query)
             query = (
                 delete(User)
                 .where(User.user_id == user_id)
