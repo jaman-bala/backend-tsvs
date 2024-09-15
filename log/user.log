@@ -11679,3 +11679,171 @@ WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311
 
 WARNING:tensorflow:From C:\Users\mrrobot\AppData\Local\Programs\Python\Python311\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
 
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO chats (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00019s] ('string',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO chats (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00020s] ('string',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO chats (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00022s] ('string',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO chats (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00021s] ('string',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT chats.id, chats.name 
+FROM chats 
+WHERE chats.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00018s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT messages.id, messages.chat_id, messages.content, messages.created_at 
+FROM messages 
+WHERE messages.chat_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00017s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO messages (chat_id, content, created_at) VALUES (?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00029s] (1, 'string', '2024-09-15 16:45:27.163797')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT messages.id, messages.chat_id, messages.content, messages.created_at 
+FROM messages 
+WHERE messages.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00015s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT messages.id, messages.chat_id, messages.content, messages.created_at 
+FROM messages 
+WHERE messages.chat_id = ?
+INFO:sqlalchemy.engine.Engine:[cached since 42.16s ago] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:httpx:HTTP Request: GET http://127.0.0.1:8001/users/all/ "HTTP/1.1 401 Unauthorized"
+ERROR:backend.src.account.user.api:SQLAlchemyError: When initializing mapper Mapper[User(users)], expression '[ChatMessage.sender_id]' failed to locate a name ("name 'ChatMessage' is not defined"). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: When initializing mapper Mapper[User(users)], expression '[ChatMessage.sender_id]' failed to locate a name ("name 'ChatMessage' is not defined"). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+ERROR:backend.src.account.user.api:SQLAlchemyError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[User(users)]'. Original exception was: When initializing mapper Mapper[User(users)], expression '[ChatMessage.sender_id]' failed to locate a name ("name 'ChatMessage' is not defined"). If this is a class name, consider adding this relationship() to the <class 'backend.src.account.user.models.User'> class after both dependent classes have been defined.
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO users (user_id, name, surname, middle_name, birth_year, email, hashed_password, inn, avatar, job_title, is_active, is_superuser, roles, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00034s] ('9e0e37432c6343c88f267cacd42bfc87', 'string', 'string', 'string', '2024-09-15', 'ermekoffdastan@gmail.com', '$2b$12$NKiFCtrUKhgFFK5ao0MS5OapmtEQmDczdeE0j4M4icO8EVNYHCzwW', 0, None, 'string', 1, 0, '["ROLE_PORTAL_USER"]', '2024-09-15 17:22:31.545001', '2024-09-15 17:22:31.545003')
+INFO:sqlalchemy.engine.Engine:INSERT INTO user_action_history (id, user_id, name, action, timestamp, details) VALUES (?, ?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00026s] ('52b77e1b41b54bdaa7e92a3e88c343a0', '9e0e37432c6343c88f267cacd42bfc87', 'string', 'Создание пользователя', '2024-09-15 17:22:31.547646', 'Пользователь:  ermekoffdastan@gmail.com создан')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00030s] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:httpx:HTTP Request: GET http://127.0.0.1:8001/users/all/ "HTTP/1.1 401 Unauthorized"
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 86.62s ago] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00024s] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.src.account.auth.jwt:username/email extracted is ermekoffdastan@gmail.com, roles are ['ROLE_PORTAL_USER']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 8.324s ago] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[generated in 0.00017s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:httpx:HTTP Request: GET http://127.0.0.1:8001/users/all/ "HTTP/1.1 200 OK"
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 339.5s ago] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:backend.src.account.auth.jwt:username/email extracted is ermekoffdastan@gmail.com, roles are ['ROLE_PORTAL_USER']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 345.6s ago] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[cached since 337.3s ago] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:httpx:HTTP Request: GET http://127.0.0.1:8001/users/all/ "HTTP/1.1 200 OK"
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00022s] ('your_username',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:httpx:HTTP Request: POST http://127.0.0.1:8001/api/token "HTTP/1.1 401 Unauthorized"
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 30.6s ago] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[cached since 37.61s ago] ('your_username',)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:httpx:HTTP Request: POST http://127.0.0.1:8001/api/token "HTTP/1.1 401 Unauthorized"
+INFO:backend.src.account.auth.jwt:username/email extracted is ermekoffdastan@gmail.com, roles are ['ROLE_PORTAL_USER']
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00025s] ('ermekoffdastan@gmail.com',)
+INFO:sqlalchemy.engine.Engine:SELECT users.user_id, users.name, users.surname, users.middle_name, users.birth_year, users.email, users.hashed_password, users.inn, users.avatar, users.job_title, users.is_active, users.is_superuser, users.roles, users.created_at, users.updated_at 
+FROM users
+INFO:sqlalchemy.engine.Engine:[generated in 0.00019s] ()
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:httpx:HTTP Request: GET http://127.0.0.1:8001/users/all/ "HTTP/1.1 200 OK"
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO chats (name) VALUES (?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00019s] ('string',)
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT chats.id, chats.name 
+FROM chats 
+WHERE chats.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00024s] (2,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT messages.id, messages.chat_id, messages.sender_id, messages.receiver_id, messages.content, messages.created_at 
+FROM messages 
+WHERE messages.chat_id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00019s] (1,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO messages (chat_id, sender_id, receiver_id, content, created_at) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00021s] (1, 'string', 'string', 'Ьфьфдфлырлф', '2024-09-15 17:40:54.076638')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT messages.id, messages.chat_id, messages.sender_id, messages.receiver_id, messages.content, messages.created_at 
+FROM messages 
+WHERE messages.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00015s] (2,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:INSERT INTO messages (chat_id, sender_id, receiver_id, content, created_at) VALUES (?, ?, ?, ?, ?)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00025s] (1, 'string', 'string', 'string', '2024-09-15 17:41:43.399310')
+INFO:sqlalchemy.engine.Engine:COMMIT
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:SELECT messages.id, messages.chat_id, messages.sender_id, messages.receiver_id, messages.content, messages.created_at 
+FROM messages 
+WHERE messages.id = ?
+INFO:sqlalchemy.engine.Engine:[generated in 0.00071s] (3,)
+INFO:sqlalchemy.engine.Engine:ROLLBACK

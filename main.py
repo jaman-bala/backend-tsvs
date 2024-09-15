@@ -23,6 +23,7 @@ from backend.src.account.face.router import router as face_router
 from backend.src.regions.router import router as region_router
 from backend.src.departments.router import router as departments_router
 from backend.src.ekzamens.router import router as ezamens_router
+from backend.src.chat.router import router as chat_router
 
 
 #########################
@@ -69,6 +70,12 @@ main_api_router = APIRouter()
 @main_api_router.get("/")
 async def ping():
     return FileResponse("static/404/404.jpg")
+
+main_api_router.include_router(
+    chat_router,
+    prefix="/chat",
+    tags=["CHAT"]
+)
 
 main_api_router.include_router(
     region_router,

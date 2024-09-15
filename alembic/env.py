@@ -8,6 +8,7 @@ from backend.src.account.user.models import BaseUser
 from backend.src.regions.models import BaseRegion
 from backend.src.departments.models import BaseDepartment
 from backend.src.ekzamens.models import BaseExam
+from backend.src.chat.models import BaseChat
 
 
 config = context.config
@@ -21,6 +22,7 @@ target_metadata = (
     BaseRegion.metadata,
     BaseDepartment.metadata,
     BaseExam.metadata,
+    BaseChat.metadata,
 
 )
 
