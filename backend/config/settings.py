@@ -19,7 +19,7 @@ class Settings:
         env_file = BASE_DIR / ".env"
 
 
-set = Settings()
+settings = Settings()
 
 # class Settings(BaseSettings):
 #     PROJECT_NAME: str = "TSVS DATABASE 🔥"

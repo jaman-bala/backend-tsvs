@@ -14,7 +14,7 @@ from starlette_exporter import handle_metrics
 from starlette_exporter import PrometheusMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.config.settings import set, BASE_DIR, STATIC_FILES_DIR
+from backend.config.settings import settings, STATIC_FILES_DIR, BASE_DIR
 from backend.src.account.user.api import user_router
 from backend.src.account.user.admin_privilege import admin_router
 from backend.src.account.user.login_handler import login_router
@@ -31,8 +31,8 @@ from backend.src.chat.router import router as chat_router
 #########################
 
 app = FastAPI(
-    title=set.PROJECT_NAME,
-    version=set.PROJECT_VERSION
+    title=settings.PROJECT_NAME,
+    version=settings.PROJECT_VERSION
 )
 
 static_dir = STATIC_FILES_DIR
